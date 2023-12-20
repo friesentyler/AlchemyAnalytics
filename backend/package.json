@@ -1,0 +1,11 @@
+{
+  "name": "taxfreebondsbackend",
+  "version": "1.0.0",
+  "description": "The backend for taxfreebonds",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tyler Friesen, Kolter Leisy, Ben Balaj",
+  "license": "ISC"
+}
