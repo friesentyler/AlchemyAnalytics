@@ -1,5 +1,5 @@
 """
-ASGI config for nwesite project.
+ASGI config for taxfreebonds project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'nwesite.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'taxfreebonds.settings')
 
 application = get_asgi_application()
