@@ -1,0 +1,115 @@
+<!-- Andrew Forster
+   - Project Date
+   - Project
+   - Sources:
+   + 
+   + 
+
+   Better Comments Extension
+    ! Important
+    * Highlight
+    ? Question
+    TODO: Todo
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+ 
+ 
+ 
+     <!-- JQUERY LINKING -->
+     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    
+ 
+     <!--*----------------------------->
+     <!--* SCRIPTS & OTHER LIBRARIES -->
+     <!--*----------------------------->
+     <!-- Icons -->
+     <script src="https://kit.fontawesome.com/3116842acc.js" crossorigin="anonymous"></script>
+ 
+     <!-- Scroll Animations -->
+     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/sup3r0001/Scroll-Animator@1.0.0/Scroll%20Animator/scrollanimator.css">
+     <script src="https://cdn.jsdelivr.net/gh/sup3r0001/Scroll-Animator@1.0.0/Scroll%20Animator/scrollanimator.js"></script>
+ 
+     <!--*------------------------------------>
+     <!--* END OF SCRIPTS & OTHER LIBRARIES -->
+     <!--*------------------------------------>
+ 
+ 
+ 
+     <!--*---------------------->
+     <!--* CSS PAGE LINKING'S -->
+     <!--*---------------------->
+ 
+     <link rel="stylesheet" type="text/css" href="">
+     <link rel="stylesheet" type="text/css" href="">
+     <link rel="stylesheet" type="text/css" href="">
+ 
+     <!--*------------------------>
+     <!--* End of CSS LINKING'S -->
+     <!--*------------------------>
+ 
+     <!-- Navbar -->
+     <nav id="nav-placeholder"></nav>
+ </head>
+ 
+ <body>
+ 
+     <main>
+         <section>
+             <h1></h1>
+             <img src="" alt="">
+         </section>
+     </main>
+ 
+     <section>
+         <h2></h2>
+         <p></p>
+     </section>
+ 
+     <section>
+         <h2></h2>
+         <p></p>
+     </section>
+ 
+     <section>
+         <h2></h2>
+         <p></p>
+     </section>
+ 
+     <section>
+         <h2></h2>
+         <p></p>
+     </section>
+ 
+     <nav id="footer-placeholder"></nav>
+ 
+ 
+ 
+ 
+ </body>
+ 
+ </html>
+ 
+ <!-- Navbar JS Code -->
+ <script>
+     $(function () {
+         $("#nav-placeholder").load("/HTML/navbar.html",
+             function () {
+                 $(".sidenavbar a:contains('Home')").addClass("active");
+             });
+     });
+ </script>
+ 
+ <!-- Footer JS Code -->
+ <script>
+     $(function () {
+         $("#footer-placeholder").load("/HTML/footer.html");
+     });
+ </script>

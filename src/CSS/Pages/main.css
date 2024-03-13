@@ -1,0 +1,322 @@
+html {
+  background-color: var(--color-primary);
+  caret-color: transparent;
+  user-select: none;
+}
+
+main {
+  margin: 10rem 0 0 0;
+}
+
+/* Section 1 - CTA */
+
+#s1 {
+  margin: 0 2rem 0 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.s1-imgcontain {
+  width: 500px;
+  height: 350px;
+  margin: 0 0 0 0;
+}
+
+.s1-img1 {
+  width: 500px;
+  box-shadow: 0px 0px 8px 1px var(--color-main);
+  border-radius: 5px;
+}
+
+.s1-img2 {
+  position: relative;
+  top: -180px;
+  left: 450px;
+  width: 100px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px 1px var(--color-main);
+}
+
+.s1-content {
+  text-align: center;
+}
+
+.s1-content button {
+  background-color: var(--color-main);
+  border: 2px solid var(--color-main);
+  font-weight: 700;
+  font-size: 2rem;
+  /* text-transform: uppercase; */
+  padding: 1rem 5rem;
+  border-radius: 2px;
+  transition-duration: 0.5s;
+}
+
+.s1-content button:hover {
+  background-color: var(--color-main-hover);
+}
+
+.main-text {
+  font-size: 2.8rem;
+}
+
+/* Section 2 - Products Shuffle */
+
+#s2 {
+  margin: 0 2rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.track {
+  height: 2rem;
+  margin: 0 auto 0 auto;
+  display: inline;
+}
+
+.track span {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 60%;
+  background-color: #b0ababae;
+  display: inline-block;
+  transition-duration: 0.5s;
+}
+
+/* Tracker for card shuffle */
+
+.track span:nth-child(2) {
+  animation: track 17s ease-in-out 0s infinite;
+}
+.track span:nth-child(3) {
+  animation: track 17s ease-in-out 5.61s infinite;
+}
+.track span:nth-child(1) {
+  animation: track 17s ease-in-out 11.22s infinite;
+}
+
+@keyframes track {
+  1% {
+    background-color: var(--color-main);
+  }
+  30% {
+    background-color: var(--color-main);
+  }
+  33% {
+    background-color: #b0ababae;
+  }
+  100% {
+    background-color: #b0ababae;
+  }
+}
+
+/* Card shuffle */
+.card {
+  display: inline;
+}
+
+.card:nth-child(1) {
+  z-index: 3;
+  position: relative;
+  top: 0;
+  left: 150px;
+  scale: 0.85;
+  animation: card1 17s ease-in-out infinite;
+}
+
+.card:nth-child(2) {
+  z-index: 5;
+  position: relative;
+  top: 0;
+  left: 0;
+  scale: 1;
+  animation: card2 17s ease-in-out infinite;
+}
+
+.card:nth-child(3) {
+  z-index: 4;
+  position: relative;
+  top: 0;
+  left: -150px;
+  scale: 0.85;
+  animation: card3 17s ease-in-out infinite;
+}
+
+@keyframes card1 {
+  0% {
+    left: 150px;
+    scale: 0.85;
+    z-index: 3;
+  }
+  29% {
+    left: 150px;
+    scale: 0.85;
+    z-index: 5;
+    box-shadow: 0px 0px 6px -1px var(--font-color-secondary);
+  }
+  33% {
+    left: 360px;
+    scale: 1;
+    z-index: 5;
+    box-shadow: 0px 0px 15px -1px var(--color-main);
+  }
+  62% {
+    left: 360px;
+    scale: 1;
+    z-index: 5;
+    box-shadow: 0px 0px 15px -1px var(--color-main);
+  }
+  66% {
+    left: 570px;
+    scale: 0.85;
+    z-index: 3;
+    box-shadow: 0px 0px 6px -1px var(--font-color-secondary);
+  }
+  94% {
+    left: 570px;
+    scale: 0.85;
+    z-index: 3;
+  }
+  100% {
+    left: 150px;
+    scale: 0.85;
+    z-index: 3;
+  }
+}
+@keyframes card2 {
+  0% {
+    left: 0;
+    scale: 1;
+    z-index: 5;
+    box-shadow: 0px 0px 15px -1px var(--color-main);
+  }
+  29% {
+    left: 0;
+    scale: 1;
+    z-index: 5;
+    box-shadow: 0px 0px 15px -1px var(--color-main);
+  }
+  33% {
+    left: 210px;
+    scale: 0.85;
+    z-index: 4;
+    box-shadow: 0px 0px 6px -1px var(--font-color-secondary);
+  }
+  62% {
+    left: 210px;
+    scale: 0.85;
+    z-index: 4;
+  }
+  66% {
+    left: -210px;
+    scale: 0.85;
+    z-index: 4;
+  }
+  94% {
+    left: -210px;
+    scale: 0.85;
+    z-index: 5;
+  }
+  100% {
+    left: 0;
+    scale: 1;
+    z-index: 5;
+    box-shadow: 0px 0px 6px -1px var(--font-color-secondary);
+  }
+}
+
+@keyframes card3 {
+  0% {
+    left: -150px;
+    scale: 0.85;
+    z-index: 4;
+  }
+  29% {
+    left: -150px;
+    scale: 0.85;
+    z-index: 4;
+  }
+  33% {
+    left: -570px;
+    scale: 0.85;
+    z-index: 4;
+  }
+  62% {
+    left: -570px;
+    scale: 0.85;
+    z-index: 4;
+    box-shadow: 0px 0px 6px -1px var(--font-color-secondary);
+  }
+  66% {
+    left: -360px;
+    scale: 1;
+    z-index: 5;
+    box-shadow: 0px 0px 15px -1px var(--color-main);
+  }
+  94% {
+    left: -360px;
+    scale: 1;
+    z-index: 5;
+    box-shadow: 0px 0px 15px -1px var(--color-main);
+  }
+  100% {
+    left: -150px;
+    scale: 0.85;
+    z-index: 4;
+    box-shadow: 0px 0px 6px -1px var(--font-color-secondary);
+  }
+}
+
+/* Logo Carousel */
+
+.logo-carousel {
+  display: flex;
+  width: 125%;
+  height: 8vw;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5rem 0 5rem 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: var(--color-secondary);
+
+}
+
+.lc1 {
+  animation: lc1 20s linear infinite;
+}
+
+.lc2 {
+  top: calc(-50px + -8vw);
+  left: 125%;
+  animation: lc2 20s linear infinite;
+}
+
+.logo-carousel img {
+  width: 7%;
+  filter: grayscale(100%) brightness(1000%);
+}
+
+@keyframes lc1 {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: -125%;
+  }
+}
+
+@keyframes lc2 {
+  0% {
+    left: 125%;
+  }
+  100% {
+    left: 0%;
+  }
+}

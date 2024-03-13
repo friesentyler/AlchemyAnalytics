@@ -1,0 +1,111 @@
+
+@font-face {
+    font-family: Inconsolata;
+    src: url(/Fonts/Inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0 0 0 0;
+}
+
+h1 {
+    /* property: value */
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 6rem;
+    margin: 0 0 16px;
+
+
+}
+
+h2 {
+    /* property: value */
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 4.8rem;
+    margin: 0 0 8px;
+
+
+}
+
+h3 {
+    /* property: value */
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 3.6rem;
+    margin: 0 0 8px;
+
+
+}
+
+h4 {
+    /* property: value */
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    margin: 0 0 8px;
+
+
+}
+
+h5 {
+    /* property: value */
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 2.4rem;
+    margin: 0 0 8px;
+
+
+}
+
+h6 {
+    /* property: value */
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin: 0 0 8px;
+
+
+}
+
+li {
+    /* property: value */
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    font-size: 1.8rem;
+}
+
+p {
+    /* property: value */
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    font-size: 1.8rem;
+    margin: 24px 0 24px;
+    line-height: 25px;
+}
+
+div {
+    /* property: value */
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    font-size: 1.8rem;
+}
+
+a {
+    /* property: value */
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    text-align: center;
+    text-decoration: none;
+}
+
+button {
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+span {
+    font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+}
