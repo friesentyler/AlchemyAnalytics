@@ -51,6 +51,8 @@ nav {
     float: right;
 }
 
+
+
 .nav-btns button {
     margin: 0.5rem 1rem 0.5rem 1rem;
     font-size: 2rem;
@@ -194,7 +196,11 @@ nav {
         margin: 0 0 0 0;
         transition-duration: 0.5s;
         justify-content: center;
+        pointer-events: none;
+    }
 
+    #navpopup.open + .nav-btns {
+        pointer-events: all;
     }
 
     .nav-btns button {

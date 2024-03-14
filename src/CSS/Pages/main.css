@@ -274,13 +274,18 @@ main {
 
 /* Logo Carousel */
 
+.lc-container {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .logo-carousel {
-  display: flex;
+  display: inline-flex;
   width: 125%;
-  height: 8vw;
+  height: 10rem;
   justify-content: space-around;
   align-items: center;
-  margin: 5rem 0 5rem 0;
+  margin: 5rem 0 0rem 0;
   position: relative;
   top: 0;
   left: 0;
@@ -289,34 +294,192 @@ main {
 }
 
 .lc1 {
-  animation: lc1 20s linear infinite;
+  animation: lc1 40s linear infinite;
 }
 
 .lc2 {
-  top: calc(-50px + -8vw);
-  left: 125%;
-  animation: lc2 20s linear infinite;
+  top: calc(-50px + -10rem);
+  transform: translate(0, 99.5%);
+  animation: lc2 40s linear infinite;
 }
 
 .logo-carousel img {
-  width: 7%;
-  filter: grayscale(100%) brightness(1000%);
+  width: 10rem;
+  filter: grayscale(1) brightness(1000%);
 }
 
 @keyframes lc1 {
   0% {
-    left: 0%;
+    transform: translate(0%);
   }
   100% {
-    left: -125%;
+    transform: translate(-99.5%);
   }
 }
 
 @keyframes lc2 {
   0% {
-    left: 125%;
+    transform: translate(99.5%);
   }
   100% {
-    left: 0%;
+    transform: translate(0%);
   }
+}
+
+
+/* Why Choose Us? Section */
+
+#why {
+  display: flex;
+  align-items: center;
+  margin: 0 5rem 0 10rem;
+}
+
+#why .text-container {
+  max-width: 60%;
+}
+
+#why .text-container h2 {
+  margin: 0 0 2rem 0;
+  font-weight: 900;
+  text-shadow: 2px 2px 2px #625555ae;
+}
+
+#why .text-container p {
+  font-size: 2.4rem;
+  margin: 0 0 2rem 1rem;
+}
+
+#why img {
+  margin: 0 0 0 auto;
+  min-width: 200px;
+  min-height: 200px;
+  width: 30%;
+  height: 30%;
+}
+
+/* Discord Invite */
+
+#discord {
+  position: relative;
+  text-align: center;
+  background-color: var(--color-secondary);
+  color: var(--font-color);
+  height: 40rem;
+  margin: 5rem 0 5rem 0;
+}
+
+#discord .text-container {
+  position: absolute;
+  min-width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#discord h2 {
+  font-size: 5rem;
+  text-shadow: 2px 2px 2px #625555ae; 
+}
+#discord h2 u {
+  color: var(--color-main);
+  text-shadow: none;
+  text-decoration: none;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+#discord button {
+  margin: 2rem;
+  width: 50%;
+  border: 5px solid var(--color-main);
+  font-weight: 700;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  padding: 1rem 5rem;
+  border-radius: 2px;
+  transition-duration: 0.5s;
+}
+
+#discord button:hover {
+  background-color: var(--color-main-hover);
+}
+
+#discord img {
+  width: 100%;
+  height: 40rem;
+  object-fit: cover;
+  opacity: 0.25;
+}
+
+/* Q & A */
+
+#qa {
+  margin: 0 5rem 0 5rem;
+}
+
+#qa h2 {
+  text-align: center;
+  font-weight: 900;
+  text-shadow: 2px 2px 2px #625555ae;
+}
+
+.qa-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  
+}
+
+.qa-card {
+  margin: 2rem;
+  padding: 3rem 2rem 2rem 2rem;
+  border-radius: 5px;
+  background-color: var(--color-secondary);
+  color: var(--font-color);
+  overflow: hidden;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+.qa-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.qa-card h5 { /* To align caret */
+  display: inline-block;
+  width: 90%;
+}
+
+.qa-card i {
+  float: right;
+  font-size: 3.5rem;
+  transition-duration: 0.5s;
+  height: 36px;
+
+}
+
+.qa-answer {
+  margin: 1rem 0 0 0;
+  max-height: 0;
+  overflow: hidden;
+  transition-duration: 0.5s;
+}
+
+/* Card Open */
+
+.qa-card.open {
+  box-shadow: 0px 0px 10px 2px var(--color-main);
+
+}
+
+.qa-card.open .qa-answer {
+  max-height: 75px;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+}
+
+.qa-card.open i {
+  transform: rotate(180deg);
 }

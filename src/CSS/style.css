@@ -6,6 +6,8 @@
 
 html {
     font-size: 62.5%;
+    overscroll-behavior: none;
+    color: var(--color-secondary);
 }
 
 body {
@@ -15,8 +17,8 @@ body {
 h1 {
     /* property: value */
     font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 6rem;
+    font-weight: 900;
+    font-size: 8rem;
     margin: 0 0 16px;
 
 
@@ -25,8 +27,8 @@ h1 {
 h2 {
     /* property: value */
     font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 4.8rem;
+    font-weight: 800;
+    font-size: 6rem;
     margin: 0 0 8px;
 
 
@@ -36,7 +38,7 @@ h3 {
     /* property: value */
     font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 3.6rem;
+    font-size: 5em;
     margin: 0 0 8px;
 
 
@@ -46,7 +48,7 @@ h4 {
     /* property: value */
     font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 4rem;
     margin: 0 0 8px;
 
 
@@ -56,7 +58,7 @@ h5 {
     /* property: value */
     font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 2.4rem;
+    font-size: 3rem;
     margin: 0 0 8px;
 
 
@@ -66,7 +68,7 @@ h6 {
     /* property: value */
     font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     margin: 0 0 8px;
 
 
