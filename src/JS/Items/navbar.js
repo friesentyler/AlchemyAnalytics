@@ -8,7 +8,6 @@ const nav = document.querySelector("nav");
 let hamburger = 0;
 
 function openNav() {
-
     if (hamburger === 0) {
         let mobileNavBtns = document.querySelectorAll(".nav-btns");
         let children = mobileNavBtns[0].children;
@@ -19,30 +18,32 @@ function openNav() {
         }
 
 
-        hamburger = 1;
         navPopup.classList.toggle("open");
         nav.classList.toggle("open");
+        hamburger = 1;
     } else {
         toggleNav();
     }
 }
-document.addEventListener('click', function (event) {
-    // Check if the clicked element is the dialog itself or its backdrop
-    if (event.target === navPopup) {
-        // Clicked on the dialog or its backdrop, trigger toggleNav
-        toggleNav();
-    }
-});
+// document.addEventListener('click', handleClick);
 window.addEventListener("scroll", toggleNav);
 window.addEventListener("keydown", handleEscKey);
 
-function toggleNav() {
-    if (nav.classList.contains("open")) {
-        nav.classList.toggle("open");
-        hamburger = 0;
-        navPopup.classList.toggle("open");
+
+function handleClick () {
+    // Check if the clicked element is the dialog itself or its backdrop
+        if (hamburger === 1) {
+        // Clicked on the dialog or its backdrop, trigger toggleNav
+        toggleNav();
     }
-    
+};
+
+function toggleNav() {
+    if (hamburger === 1) {
+        nav.classList.remove("open");
+        navPopup.classList.remove("open");
+        hamburger = 0;
+        }
 }
 
 function handleEscKey(event) {

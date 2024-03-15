@@ -8,9 +8,9 @@ main {
   margin: 10rem 0 0 0;
 }
 
-/* Section 1 - CTA */
+/* Main Content - CTA */
 
-#s1 {
+#main-content {
   margin: 0 2rem 0 2rem;
 
   display: flex;
@@ -18,22 +18,26 @@ main {
   align-items: center;
 }
 
-.s1-imgcontain {
+.mc-imgcontain {
   width: 500px;
   height: 350px;
   margin: 0 0 0 0;
+  position: relative;
+  top: 0;
+  left: 0;  
 }
 
-.s1-img1 {
+.mc-img1 {
+  max-width: 90%;
   width: 500px;
   box-shadow: 0px 0px 8px 1px var(--color-main);
   border-radius: 5px;
 }
 
-.s1-img2 {
-  position: relative;
-  top: -180px;
-  left: 450px;
+.mc-img2 {
+  position: absolute;
+  top: 80px;
+  left: 400px;
   width: 100px;
   height: 200px;
   object-fit: cover;
@@ -41,11 +45,11 @@ main {
   box-shadow: 0px 0px 8px 1px var(--color-main);
 }
 
-.s1-content {
+.mc-content {
   text-align: center;
 }
 
-.s1-content button {
+.mc-content button {
   background-color: var(--color-main);
   border: 2px solid var(--color-main);
   font-weight: 700;
@@ -56,7 +60,7 @@ main {
   transition-duration: 0.5s;
 }
 
-.s1-content button:hover {
+.mc-content button:hover {
   background-color: var(--color-main-hover);
 }
 
@@ -64,13 +68,15 @@ main {
   font-size: 2.8rem;
 }
 
-/* Section 2 - Products Shuffle */
+/* Products Shuffle */
 
-#s2 {
+#products {
   margin: 0 2rem 0 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .track {
@@ -473,4 +479,73 @@ main {
 
 .qa-card.open i {
   transform: rotate(180deg);
+}
+
+
+
+
+/* Mobile Layout */
+
+@media (max-width: 750px) {
+
+  /* Main Content */
+
+  .mc-imgcontain {
+    width: auto;
+  }
+
+  .mc-img1 {
+    max-width: 260px;
+    
+  }
+
+  .mc-img2 {
+    width: 40px;
+    height: 80px;
+    top: 90px;
+    left: 235px;
+  }
+
+
+  /* Product Shuffle */
+
+  #products {
+    margin: 0 0 0 0;
+  }
+  
+  /* Logo Carousel */
+
+  .logo-carousel {
+    width: 200%;
+  }
+
+  .logo-carousel img {
+    width: 7rem;
+  }
+
+  /* Why Choose Us? Section */
+
+  #why {
+    flex-direction: column;
+    margin: 0 0 0 0;
+  }
+
+  /* Discord Invite */
+
+
+
+  /* Q & A */
+
+  #qa {
+    margin: 0 0 0 0;
+  }
+
+  .qa-container {
+    grid-template-columns: 1fr;
+  }
+
+  .qa-card {
+    padding: 2rem 2rem 1rem 2rem;
+  }
+
 }

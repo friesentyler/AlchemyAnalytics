@@ -64,6 +64,10 @@
     margin: 0 5rem 0;
 }
 
+.footer .modern-btn {
+    width: 100%;
+}
+
 /* Disclaimer */
 
 p.disclaimer {
