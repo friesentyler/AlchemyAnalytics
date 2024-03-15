@@ -54,23 +54,40 @@
 
         .sign-in-button {
             text-decoration: none; /* Remove underlining */
-            color: #333; /* Match the font color of other buttons */
+            color: #fff; /* Text color */
+            background-color: #4CAF50; /* Button color */
             padding: 10px 20px;
             border-radius: 5px;
             font-size: 1.2em;
             cursor: pointer;
             transition: background-color 0.3s ease-in-out;
-            background-color: #666; /* Match the other buttons' color */
         }
 
         .sign-in-button:hover {
-            background-color: #444; /* Darker color on hover */
+            background-color: #45a049; /* Darker color on hover */
         }
+
+        .logout-button {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            border: none; /* Remove border */
+            background-color: #4CAF50; /* Button color */
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .logout-button:hover {
+            background-color: #45a049; /* Darker color on hover */
+        }
+
 
         section {
             padding: 80px 20px;
             text-align: center;
-            margin-top: 80px; /* Adjusted margin to account for the fixed header */
+            margin-top: 140px; /* Adjusted margin to account for the fixed header */
         }
 
         h1 {
@@ -93,7 +110,7 @@
         }
 
         .article-box {
-            background-color: #999;
+            background-color: #fff;
             padding: 20px;
             margin: 15px;
             border-radius: 5px;
@@ -111,46 +128,61 @@
             color: #fff;
             padding: 20px 0;
             text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Invest</a>
-            <a href="#">Screener</a>
-            <a href="#">FAQ</a>
-            <a href="#">Contact</a>
-        </nav>
-        <div>
+<header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Invest</a>
+        <a href="#">Screener</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="user-account">
+        {% if user.is_authenticated %}
+            <!-- Show user account information if authenticated -->
+            <p>Welcome, {{ user.username }}</p>
+            <!--<a href="{% url 'account_logout' %}" class="sign-in-button">Logout</a>-->
+            <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        {% else %}
+            <!-- Show sign-in button if not authenticated -->
             <a class="sign-in-button" href="{% provider_login_url 'google' %}">Sign in with Google</a>
-        </div>
-    </header>
-
-    <section>
-        <h1>Tax-Free Bonds</h1>
-        <p>Welcome to our Neo Brutalist-inspired website on tax-free bonds. Explore investment opportunities with a slightly darker grey color palette.</p>
-    </section>
-
-    <div class="article-boxes">
-        <div class="article-box">
-            <h2>Article 1</h2>
-            <p>Content of Article 1 goes here...</p>
-        </div>
-        <div class="article-box">
-            <h2>Article 2</h2>
-            <p>Content of Article 2 goes here...</p>
-        </div>
-        <div class="article-box">
-            <h2>Article 3</h2>
-            <p>Content of Article 3 goes here...</p>
-        </div>
+        {% endif %}
     </div>
+</header>
 
-    <footer>
-        <p>&copy; 2023 Tax-Free Bonds. All rights reserved.</p>
-    </footer>
+<section>
+    <h1>Tax-Free Bonds</h1>
+    <p>Welcome to our Neo Brutalist-inspired website on tax-free bonds. Explore investment opportunities with a slightly
+        darker grey color palette.</p>
+</section>
+
+<div class="article-boxes">
+    <div class="article-box">
+        <h2>Article 1</h2>
+        <p>Content of Article 1 goes here...</p>
+    </div>
+    <div class="article-box">
+        <h2>Article 2</h2>
+        <p>Content of Article 2 goes here...</p>
+    </div>
+    <div class="article-box">
+        <h2>Article 3</h2>
+        <p>Content of Article 3 goes here...</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 Tax-Free Bonds. All rights reserved.</p>
+</footer>
 </body>
 </html>

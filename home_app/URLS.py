@@ -19,7 +19,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('accounts/', include('allauth.urls')),
-    path('accounts/', include('allauth.socialaccount.urls'))
+    path('', views.index, name='index')
 ]
