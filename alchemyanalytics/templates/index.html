@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+{% load allauth %}
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax-Free Bonds</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #ccc;
+            color: #333;
+        }
+
+        header {
+            background-color: #999;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            text-align: center;
+            flex: 1; /* Take remaining space */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+            font-weight: bold;
+            background-color: #666;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            background-color: #444;
+        }
+
+        .sign-in-button {
+            text-decoration: none; /* Remove underlining */
+            color: #fff; /* Text color */
+            background-color: #4CAF50; /* Button color */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .sign-in-button:hover {
+            background-color: #45a049; /* Darker color on hover */
+        }
+
+        .logout-button {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            border: none; /* Remove border */
+            background-color: #4CAF50; /* Button color */
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .logout-button:hover {
+            background-color: #45a049; /* Darker color on hover */
+        }
+
+
+        section {
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 140px; /* Adjusted margin to account for the fixed header */
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .article-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .article-box {
+            background-color: #fff;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            max-width: 300px;
+        }
+
+        .article-box h2 {
+            color: #333;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Invest</a>
+        <a href="#">Screener</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="user-account">
+        {% if user.is_authenticated %}
+            <!-- Show user account information if authenticated -->
+            <p>Welcome, {{ user.username }}</p>
+            <!--<a href="{% url 'account_logout' %}" class="sign-in-button">Logout</a>-->
+            <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        {% else %}
+            <!-- Show sign-in button if not authenticated -->
+            <a class="sign-in-button" href="{% provider_login_url 'google' %}">Sign in with Google</a>
+        {% endif %}
+    </div>
+</header>
+
+<section>
+    <h1>Tax-Free Bonds</h1>
+    <p>Welcome to our Neo Brutalist-inspired website on tax-free bonds. Explore investment opportunities with a slightly
+        darker grey color palette.</p>
+</section>
+
+<div class="article-boxes">
+    <div class="article-box">
+        <h2>Article 1</h2>
+        <p>Content of Article 1 goes here...</p>
+    </div>
+    <div class="article-box">
+        <h2>Article 2</h2>
+        <p>Content of Article 2 goes here...</p>
+    </div>
+    <div class="article-box">
+        <h2>Article 3</h2>
+        <p>Content of Article 3 goes here...</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 Tax-Free Bonds. All rights reserved.</p>
+</footer>
+</body>
+</html>
