@@ -492,6 +492,9 @@ main {
 
   .mc-imgcontain {
     width: auto;
+    height: auto;
+    margin: 0 0 10rem 0;
+
   }
 
   .mc-img1 {
@@ -530,9 +533,28 @@ main {
     margin: 0 0 0 0;
   }
 
+  #why .text-container {
+    max-width: 100%;
+    margin: 2rem;
+    order: 2;
+  }
+
+  #why img {
+    width: 85%;
+    height: 85%;
+    order: 1;
+    margin: 0 auto;
+  }
+
   /* Discord Invite */
 
+  #discord h2 {
+    font-size: 3rem;
+  }
 
+  #discord .modern-btn {
+    width: 80%;
+  }
 
   /* Q & A */
 
