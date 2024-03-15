@@ -3,6 +3,22 @@
 /* ------------- */ /**/
 
 
+/* Button Styles */
+
+.modern-btn {
+    margin: 2rem 0;
+    border: 5px solid var(--color-main);
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1rem 5rem;
+    border-radius: 2px;
+    transition-duration: 0.5s;
+  }
+  
+  .modern-btn:hover {
+    background-color: var(--color-main-hover);
+  }
+
 /* Cards */
 
 .card-container {

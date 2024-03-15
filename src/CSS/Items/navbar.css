@@ -34,8 +34,8 @@ nav {
 
 /* Logo Section */
 
-.logo h4 {
-    margin: 0 0 0 0;
+.logo h5 {
+    display: inline-block;
 }
 
 .img {
@@ -57,6 +57,19 @@ nav {
     margin: 0.5rem 1rem 0.5rem 1rem;
     font-size: 2rem;
     font-weight: 600;
+}
+
+.nav-btns a button::after {
+    content: '';
+    display: block;
+    margin: 7px 0 0 0;
+    width: 0;
+    height: 3.5px;
+    background: var(--color-main);
+    transition-duration: 0.5s;
+}
+.nav-btns a button:hover::after {
+    width: calc(100% + 5px);
 }
 
 /* Nav Icon */

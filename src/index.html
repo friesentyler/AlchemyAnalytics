@@ -14,7 +14,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Alchemy Analytics</title>
+    <link rel="icon" type="image/png" href="/Images/logo.png" />
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
@@ -36,9 +37,9 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://cdn.jsdelivr.net/gh/Scroll-Animator/sa@v0.1.2-beta/scrollanimator.css"
+      href="https://cdn.jsdelivr.net/gh/Scroll-Animator/sa@v0.1.3-beta/scrollanimator.css"
     />
-    <script src="https://cdn.jsdelivr.net/gh/Scroll-Animator/sa@v0.1.2-beta/scrollanimator.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Scroll-Animator/sa@v0.1.3-beta/scrollanimator.js"></script>
 
     <script src="/JS/Pages/main.js" defer></script>
 
@@ -68,10 +69,24 @@
       <section id="s1">
         <!-- Container For Main Text -->
         <div class="s1-content">
-          <h1 class="main-header">Alchemy Analytics</h1>
-          <p class="main-text">The Analytics platform for everyday trading.</p>
-          <a href=""><button>Lets Get Started</button></a>
-          <p>
+          <h1
+            class="main-header onload-shift animation-delay0_3 animation-duration0_5"
+          >
+            Alchemy Analytics
+          </h1>
+          <p
+            class="main-text onload-shift animation-delay0_4 animation-duration0_5"
+          >
+            The Analytics platform for everyday trading.
+          </p>
+          <a href=""
+            ><button
+              class="onload-shift animation-delay0_5 animation-duration0_5"
+            >
+              Lets Get Started
+            </button></a
+          >
+          <p class="onload-shift animation-delay0_6 animation-duration0_5">
             <i
               class="fa-sharp fa-solid fa-circle-check"
               style="color: #04d24c"
@@ -85,12 +100,12 @@
         </div>
         <div class="s1-imgcontain">
           <img
-            class="s1-img1 onload-shift animation-delay0_5 animation-duration1"
+            class="s1-img1 onload-shift animation-delay0_7 animation-duration0_5"
             src="/Images/stocks.png"
             alt="Image of Stocks"
           />
           <img
-            class="s1-img2 onload-shift animation-delay0_7 animation-duration1"
+            class="s1-img2 onload-shift animation-delay0_8 animation-duration0_5"
             src="/Images/stocks.png"
             alt="Image of Stocks"
           />
@@ -262,7 +277,7 @@
       </div>
       <img
         class="sa-shift animation-delay0_5 animation-duration0_7"
-        src="/Images/istockphoto-1185277141-612x612-removebg-preview.png"
+        src="/Images/who1.png"
         alt="Image of Stocks"
       />
     </section>
@@ -272,14 +287,14 @@
     <!-------------------->
 
     <section id="discord">
-      <img src="Images/Frame-1.jpg" alt="Stocks Graphic" />
+      <img src="Images/discord-bg.png" alt="Stocks Graphic" />
       <div class="text-container sa-group sa-freeze">
         <h2 class="sa-shift animation-delay0_1 animation-duration0_7">
           Get a <u>free</u> indicator<br />Join our discord
         </h2>
-        <button class="sa-shift animation-delay0_1 animation-duration0_7">
-          <a href="">Join Now!</a>
-        </button>
+        <a href="" class="sa-shift animation-delay0_1 animation-duration0_7"
+          ><button class="modern-btn">Join Now!</button></a
+        >
       </div>
     </section>
 
@@ -289,73 +304,106 @@
 
     <section id="qa">
       <h2>Q & A</h2>
-      <div class="qa-container">
-        <div class="qa-split">
-          <div class="qa-card">
+      <div class="qa-container sa-group sa-freeze">
+        <div class="qa-split sa-group">
+          <div
+            class="qa-card sa-shift animation-delay0_1 animation-duration0_7"
+          >
             <div class="qa-head">
-              <h6>What Are Indicators?</h6>
+              <h6>What are Indicators / Algos / Strategies</h6>
               <i class="fa-solid fa-angle-down"></i>
             </div>
             <p class="qa-answer">
-              Indicators are a cool thing to track the market
+              Indicators: Graph tools showing trends, volatility, momentum, and
+              trading volume.
+              <br /><br />Algorithms: Automated trading rules based on specific
+              conditions. <br /><br />Strategies: Plans for making trading
+              decisions, like buying low and selling high or following trends.
             </p>
           </div>
-          <div class="qa-card">
+          <div
+            class="qa-card sa-shift animation-delay0_2 animation-duration0_7"
+          >
             <div class="qa-head">
-              <h6>After buying will I have permanent access?</h6>
+              <h6>Is this for Pros or Begginers</h6>
               <i class="fa-solid fa-angle-down"></i>
             </div>
             <p class="qa-answer">
-              Yes, you will always have access to everything you buy under your
-              account
+              We try to serve both the new and the seasoned when it comes to
+              analyzing and trading the financial markets by providing an in
+              depth description on each of our products. In other words if you
+              are new to trading, you have come to the right place!
             </p>
           </div>
-          <div class="qa-card">
+          <div
+            class="qa-card sa-shift animation-delay0_3 animation-duration0_7"
+          >
             <div class="qa-head">
-              <h6>Is this beginner friendly?</h6>
-              <i class="fa-solid fa-angle-down"></i>
-            </div>
-            <p class="qa-answer">No, this requires knowledge in x, y and z</p>
-          </div>
-          <div class="qa-card">
-            <div class="qa-head">
-              <h6>When will I get access after purchasing?</h6>
+              <h6>How do I use Tradingview Indicators / Strategies</h6>
               <i class="fa-solid fa-angle-down"></i>
             </div>
             <p class="qa-answer">
-              You will receive immediate access to your product after purchase
+              If you have purchased a product for use on Tradingview, simply
+              download the .txt file and copy&paste the contents into your
+              Pinescript Development Environment.
+            </p>
+          </div>
+          <div
+            class="qa-card sa-shift animation-delay0_4 animation-duration0_7"
+          >
+            <div class="qa-head">
+              <h6>
+                How do I use Tradestation Multicharts Indicators / strategies
+              </h6>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <p class="qa-answer">
+              If you have purchased a product for use on Tradestation /
+              Multicharts, simply download the file (.ELD - Tradestation or .pla
+              MultiCharts), and open it; you will then be prompted by either
+              tradestation or multicharts.
             </p>
           </div>
         </div>
-        <div class="qa-split">
 
-          <div class="qa-card">
+        <div class="qa-split sa-group">
+          <div
+            class="qa-card sa-shift animation-delay0_5 animation-duration0_7"
+          >
             <div class="qa-head">
               <h6>What's the refund policy?</h6>
               <i class="fa-solid fa-angle-down"></i>
             </div>
             <p class="qa-answer">
               Unfortunately due to the nature of online goods, refunds are not
-              accepted
+              accepted.
             </p>
           </div>
-          <div class="qa-card">
+          <div
+            class="qa-card sa-shift animation-delay0_6 animation-duration0_7"
+          >
             <div class="qa-head">
-              <h6>What are Strategies?</h6>
+              <h6>Do you Provide products for other platforms</h6>
               <i class="fa-solid fa-angle-down"></i>
             </div>
             <p class="qa-answer">
-              Strategies are a cool thing to track the market
+              We are working on providing products for all large scale
+              platforms. If you would like support for a platform that we arent
+              currently supporting, dont hesitate to contact our admins!
             </p>
           </div>
-          <div class="qa-card">
+          <div
+            class="qa-card sa-shift animation-delay0_7 animation-duration0_7"
+          >
             <div class="qa-head">
               <h6>Where do I go for more support?</h6>
               <i class="fa-solid fa-angle-down"></i>
             </div>
-            <p class="qa-answer">You can email us at @email</p>
+            <p class="qa-answer">You can email us at @email.</p>
           </div>
-          <div class="qa-card">
+          <div
+            class="qa-card sa-shift animation-delay0_8 animation-duration0_7"
+          >
             <div class="qa-head">
               <h6>How do I get started?</h6>
               <i class="fa-solid fa-angle-down"></i>
@@ -378,15 +426,12 @@
 <!-------------------->
 <script>
   $(function () {
-    $("#nav-placeholder").load("/HTML/navbar.html", function () {
-      $(".sidenavbar a:contains('Home')").addClass("active");
-    });
+    $("#nav-placeholder").load("/HTML/Items/navbar.html");
   });
 </script>
-
 <!-- Footer JS Code -->
-<!-- <script>
-    $(function () {
-        $("#footer-placeholder").load("/HTML/footer.html");
-    });
-</script> -->
+<script>
+  $(function () {
+    $("#footer-placeholder").load("/HTML/Items/footer.html");
+  });
+</script>
