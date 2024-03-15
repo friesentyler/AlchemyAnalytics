@@ -51,15 +51,25 @@ nav {
     float: right;
 }
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 3a22c48934954d667943d228f47caaec55934362
 .nav-btns button {
     margin: 0.5rem 1rem 0.5rem 1rem;
     font-size: 2rem;
     font-weight: 600;
+}
+
+.nav-btns a button::after {
+    content: '';
+    display: block;
+    margin: 7px 0 0 0;
+    width: 0;
+    height: 3.5px;
+    background: var(--color-main);
+    transition-duration: 0.5s;
+}
+.nav-btns a button:hover::after {
+    width: calc(100% + 5px);
 }
 
 /* Nav Icon */
@@ -199,15 +209,11 @@ nav {
         margin: 0 0 0 0;
         transition-duration: 0.5s;
         justify-content: center;
-<<<<<<< HEAD
-
-=======
         pointer-events: none;
     }
 
     #navpopup.open + .nav-btns {
         pointer-events: all;
->>>>>>> 3a22c48934954d667943d228f47caaec55934362
     }
 
     .nav-btns button {

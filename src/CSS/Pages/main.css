@@ -274,55 +274,32 @@ main {
 
 /* Logo Carousel */
 
-<<<<<<< HEAD
-.logo-carousel {
-  display: flex;
-  width: 125%;
-  height: 8vw;
-  justify-content: space-around;
-  align-items: center;
-  margin: 5rem 0 5rem 0;
-=======
 .lc-container {
   width: 100%;
-  overflow-x: hidden;
+  height: 10rem;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 10rem 0;
 }
 
 .logo-carousel {
   display: inline-flex;
   width: 125%;
-  height: 10rem;
+  height: 100%;
   justify-content: space-around;
   align-items: center;
-  margin: 5rem 0 0rem 0;
->>>>>>> 3a22c48934954d667943d228f47caaec55934362
-  position: relative;
-  top: 0;
-  left: 0;
+  position: absolute;
   background-color: var(--color-secondary);
 
 }
 
 .lc1 {
-<<<<<<< HEAD
-  animation: lc1 20s linear infinite;
-}
-
-.lc2 {
-  top: calc(-50px + -8vw);
-  left: 125%;
-  animation: lc2 20s linear infinite;
-}
-
-.logo-carousel img {
-  width: 7%;
-  filter: grayscale(100%) brightness(1000%);
-=======
   animation: lc1 40s linear infinite;
 }
 
 .lc2 {
-  top: calc(-50px + -10rem);
   transform: translate(0, 99.5%);
   animation: lc2 40s linear infinite;
 }
@@ -330,35 +307,19 @@ main {
 .logo-carousel img {
   width: 10rem;
   filter: grayscale(1) brightness(1000%);
->>>>>>> 3a22c48934954d667943d228f47caaec55934362
 }
 
 @keyframes lc1 {
   0% {
-<<<<<<< HEAD
-    left: 0%;
-  }
-  100% {
-    left: -125%;
-=======
     transform: translate(0%);
   }
   100% {
     transform: translate(-99.5%);
->>>>>>> 3a22c48934954d667943d228f47caaec55934362
   }
 }
 
 @keyframes lc2 {
   0% {
-<<<<<<< HEAD
-    left: 125%;
-  }
-  100% {
-    left: 0%;
-  }
-}
-=======
     transform: translate(99.5%);
   }
   100% {
@@ -474,7 +435,7 @@ main {
 .qa-card {
   margin: 2rem;
   padding: 3rem 2rem 2rem 2rem;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: var(--color-secondary);
   color: var(--font-color);
   overflow: hidden;
@@ -523,4 +484,3 @@ main {
 .qa-card.open i {
   transform: rotate(180deg);
 }
->>>>>>> 3a22c48934954d667943d228f47caaec55934362
