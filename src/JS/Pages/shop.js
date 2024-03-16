@@ -20,3 +20,19 @@ sorter.addEventListener("click", function() {
     sorter.innerHTML = sortOptions[currentSort];
     sorter.value = currentSort;
 });
+
+
+// Product Viewer
+
+let viewBtns = document.querySelectorAll(".product-btn");
+
+viewBtns.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        let product = btn.parentElement;    
+        
+        product.classList.toggle("active");
+
+        btn.innerText = btn.innerText.includes("View") ? "Add to cart" : "View Item";
+    });
+});
+
