@@ -104,10 +104,13 @@
         </button>
       </aside>
 
-      <section class="products" id="products">
+      <section class="products">
         <h3 class="p-h3">Products:</h3>
-        <!-- Card Container Contains all Cards/Products. -->
-        <div class="card-container">
+        <!-- 
+            Card Container Contains all Cards/Products. Load products here.
+            Use the ID "products" to identify the container.
+        -->
+        <div class="card-container" id="products">
 
           <div class="p-viewer">
               <div class="card">
@@ -126,7 +129,7 @@
               <button class="product-btn" id="product1">View Item</button>
             </div>
           </div>
-          
+
           <div class="p-viewer">
               <div class="card">
                 <div class="x-btn xpv"><span></span><span></span></div>
@@ -193,8 +196,17 @@
           
 
 
-
         </div> <!-- End of Card Container -->
+
+        <div class="pagination">
+            <button class="start"><i class="fa-solid fa-backward"></i></button>
+            <button class="circle p1 active">1</button>
+            <button class="circle p2">2</button>
+            <button class="circle p3">3</button>
+            <button class="circle p4">4</button>
+            <button class="circle p5">5</button>
+            <button class="end"><i class="fa-solid fa-forward"></i></button>
+        </div>
       </section>
     </div>
 
