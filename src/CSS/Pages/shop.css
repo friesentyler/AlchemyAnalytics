@@ -26,6 +26,10 @@
 
 /* Sorter */
 
+#filter-btn {
+  display: none;
+}
+
 .page-split {
   display: flex;
   margin: 0rem 0;
@@ -67,18 +71,23 @@
   width: 100%;
 }
 
+/* -------- */
 /* Products */
+/* -------- */
 
 .products .card-container {
   justify-content: center;
   flex-wrap: wrap;
+  margin-left: 3rem;
 }
 
 .products .card {
   width: 300px;
 }
 
+/* -------------- */
 /* Product Viewer */
+/* -------------- */
 
 .price-lbl {
   color: var(--color-main);
@@ -86,7 +95,7 @@
   text-shadow: 1px 1px 1px var(--font-color);
 }
 
-.cover-scrn {
+#cover-scrn {
   position: fixed;
   top: 0;
   left: 0;
@@ -99,22 +108,21 @@
   transition-duration: 0.5s;
 }
 
-.cover-scrn.active {
+#cover-scrn.active {
   opacity: 1;
   pointer-events: all;
 }
 
 #products .p-viewer {
-  width: 300px;
+  width: 330px;
   margin: 1.5rem;
-  padding: 1.5rem;
 }
 
 #products .card {
   transform: translate(0%, 0%);
   margin: 0 0 0 0;
-  transition-duration: 0.5s;
-  width: 100%;
+  transition-duration: 0s;
+  width: 90%;
 }
 
 #products .card.active {
@@ -124,11 +132,17 @@
   bottom: 0;
   left: 0;
   right: 0;
-  overflow-y: scroll;
-  margin: 2rem auto 0 auto;
+  margin: 10rem auto 0 auto;
   height: 70%;
   width: 80%;
   z-index: 8;
+  padding: 0 0 0 0;
+}
+
+#products .card.active .card-scroll {
+  overflow-y: scroll;
+  height: 97%;
+  padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
 /* Edits Image Values in Product Viewer */
@@ -147,6 +161,19 @@
   display: inline-block;
 }
 
+#products .card button {
+  transition-duration: 0s;
+}
+
+#products .card.active button {
+  position: absolute;
+  bottom: 0;
+  width: 95%;
+  left: 49.35%;
+  transform: translate(-50%, 0%);
+  margin: 0 0 1rem 0;
+}
+
 /* Edits Description Height in Product Viewer */
 
 #products .card .p-desc {
@@ -157,8 +184,44 @@
   transition-duration: 0.5s;
 }
 #products .card.active .p-desc {
-  margin: 2rem;
+  margin: 2rem 2rem 8rem 2rem;
   max-height: 1000px;
   height: auto;
   opacity: 1;
+}
+
+@media (max-width: 750px) {
+
+  #products .card-container {
+    margin: 0 0 0 0;
+  }
+
+  #products .card.active {
+    width: 90%;
+  }
+
+  #filter-btn {
+    display: block;
+    color: var(--color-secondary);
+    font-weight: 900;
+    width: 80%;
+    margin: 2rem auto 2rem auto;
+  }
+
+  .page-split {
+    flex-direction: column;
+  }
+
+  .p-sorter {
+    max-height: 0px;
+    padding: 0 0 0 0;
+    overflow: hidden;
+    transition: 0.5s;
+  }
+
+  .p-sorter.active {
+    max-height: 500px;
+    height: auto;
+    padding: 2rem;
+  }
 }

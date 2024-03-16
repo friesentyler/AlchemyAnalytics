@@ -65,6 +65,49 @@
 }
 
 
+/* X button */
 
+.x-btn {
+    position: fixed;
+    width: 30px;
+    height: 25px;
+    top: -5%;
+    left: 97%;
+    z-index: 9;
+    opacity: 0;
+    pointer-events: none;
+}
 
-/* Q & A Box */
+.x-btn span {
+    position: absolute;
+    background: var(--color-main);
+    height: 4px;
+    width: 28px;
+}
+
+.x-btn.active {
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.x-btn.active span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.x-btn.active span:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .x-btn {
+        left: 95%;
+    }
+}
+
+@media (max-height: 550px) {
+    .x-btn {
+        top: 20PX;
+        left: 102%;
+    }
+}
