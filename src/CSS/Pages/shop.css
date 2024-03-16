@@ -1,5 +1,5 @@
 
-.footer {
+#footer-placeholder .footer {
     margin: 0 0 0 0;
 }
 
@@ -44,7 +44,7 @@
     min-width: 20%;
 }
 
-.p-sorter h3 {
+.p-sorter h4 {
     margin: 2rem 0 2rem 0;
 
 }
@@ -77,9 +77,16 @@
 
 .products .card-container {
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .products .card {
     width: 300px;
+}
+
+.products .card p {
+    color: var(--color-main);
+    font-weight: 900;
+    text-shadow: 1px 1px 1px var(--font-color);
 }
 

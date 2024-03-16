@@ -66,7 +66,7 @@ main {
 
 /* Products Shuffle */
 
-#carousel {
+#shuffle {
   margin: 0 2rem 0 2rem;
   display: flex;
   flex-direction: column;
@@ -127,7 +127,7 @@ main {
   position: relative;
   top: 0;
   left: 150px;
-  scale: 0.85;
+  scale: 0.85;  
   animation: card1 17s ease-in-out infinite;
 }
 
@@ -508,8 +508,12 @@ main {
 
   /* Products Shuffle */
 
-  #carousel {
+  #shuffle {
     margin: 0 0 0 0;
+  }
+
+  #shuffle .card h5 {
+    margin: 1rem 0 0 0;
   }
   
   /* Logo Carousel */
