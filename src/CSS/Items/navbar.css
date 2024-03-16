@@ -28,6 +28,7 @@ nav {
     text-align: center;
 
     margin: 1.3rem 2rem 1.3rem 2rem;
+    z-index: 11;
 }
 
 

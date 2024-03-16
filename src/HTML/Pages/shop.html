@@ -1,0 +1,178 @@
+<!-- Andrew Forster
+   - Project Date
+   - Project
+   - Sources:
+   + 
+   + 
+
+   Better Comments Extension
+    ! Important
+    * Highlight
+    ? Question
+    TODO: Todo
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop</title>
+
+    <!-- JQUERY LINKING -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <!--*----------------------------->
+    <!--* SCRIPTS & OTHER LIBRARIES -->
+    <!--*----------------------------->
+
+    <script src="/JS/Pages/shop.js" defer></script>
+
+    <!-- Scroll Animations -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/Scroll-Animator/sa@v0.1.3-beta/scrollanimator.css"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/Scroll-Animator/sa@v0.1.3-beta/scrollanimator.js"></script>
+
+    <!--*------------------------------------>
+    <!--* END OF SCRIPTS & OTHER LIBRARIES -->
+    <!--*------------------------------------>
+
+    <!--*---------------------->
+    <!--* CSS PAGE LINKING'S -->
+    <!--*---------------------->
+
+    <link rel="stylesheet" type="text/css" href="/CSS/Pages/shop.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/Items/utilities.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/Items/palette.css" />
+
+    <!--*------------------------>
+    <!--* End of CSS LINKING'S -->
+    <!--*------------------------>
+
+    <!-- Navbar -->
+    <nav id="nav-placeholder"></nav>
+  </head>
+
+  <body>
+    <main>
+      <section class="shop-main">
+        <div class="img-container">
+            <img src="/Images/shop.png" alt="Shop background image" />
+        </div>
+    </section>
+</main>
+
+<div class="page-split">
+    <aside class="p-sorter">
+          <h3 class="items">Items</h3>
+          <input type="checkbox" id="items-indicator">
+          <label for="items-indicator">Indicator</label>
+          <br>
+          <br>
+          <input type="checkbox" id="items-strat">
+          <label for="items-strat">Strategy</label>
+          
+          <h3 class="packs">Packages</h3>
+          <input type="checkbox" id="packs-indicator">
+          <label for="packs-indicator">Indicator</label>
+          <br>
+          <br>
+          <input type="checkbox" id="packs-strat">
+          <label for="packs-strat">Strategy</label>
+          
+          <h3 class="price">Max Price</h3>
+          <input type="range" id="price-range" name="price" min="5" max="500" value="500">
+          <p>$<label for="price-range" id="price-value">500</label></p>
+          
+          <h3 class="sort">Sort By</h3>
+          <button type="button" class="modern-btn" id="sortby" value="2">Newest</button>
+    
+        </aside>
+        
+        <section class="products" id="products">
+            <h2 class="p-h2">Products:</h2>
+            <div class="card-container" data-sa-threshold="450">
+                
+                
+                <div class="card">
+                  <img src="/Images/product.png" alt="Image of product" />
+                  <h5>Advance Decline</h5>
+                  <p>$ 49.99</p>
+                  <a href=""><button>View Item</button></a>
+                </div>
+                <div class="card">
+                  <img src="/Images/product.png" alt="Image of product" />
+                  <h5>Advance Decline</h5>
+                  <p>$ 49.99</p>
+                  <a href=""><button>View Item</button></a>
+                </div>
+                <div class="card">
+                  <img src="/Images/product.png" alt="Image of product" />
+                  <h5>Advance Decline</h5>
+                  <p>$ 49.99</p>
+                  <a href=""><button>View Item</button></a>
+                </div>
+                <div class="card">
+                  <img src="/Images/product.png" alt="Image of product" />
+                  <h5>Advance Decline</h5>
+                  <p>$ 49.99</p>
+                  <a href=""><button>View Item</button></a>
+                </div>
+                <div class="card">
+                  <img src="/Images/product.png" alt="Image of product" />
+                  <h5>Advance Decline</h5>
+                  <p>$ 49.99</p>
+                  <a href=""><button>View Item</button></a>
+                </div>
+                <div class="card">
+                  <img src="/Images/product.png" alt="Image of product" />
+                  <h5>Advance Decline</h5>
+                  <p>$ 49.99</p>
+                  <a href=""><button>View Item</button></a>
+                </div>
+                <div class="card">
+                  <img src="/Images/product.png" alt="Image of product" />
+                  <h5>Advance Decline</h5>
+                  <p>$ 49.99</p>
+                  <a href=""><button>View Item</button></a>
+                </div>
+                <div class="card">
+                  <img src="/Images/product.png" alt="Image of product" />
+                  <h5>Advance Decline</h5>
+                  <p>$ 49.99</p>
+                  <a href=""><button>View Item</button></a>
+                </div>
+                <div class="card">
+                  <img src="/Images/product.png" alt="Image of product" />
+                  <h5>Advance Decline</h5>
+                  <p>$ 49.99</p>
+                  <a href=""><button>View Item</button></a>
+                </div>
+
+                
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-placeholder"></div>
+  </body>
+</html>
+
+<!-------------------->
+<!-- Navbar JS Code -->
+<!-------------------->
+<script>
+  $(function () {
+    $("#nav-placeholder").load("/HTML/Items/navbar.html");
+  });
+</script>
+<!-- Footer JS Code -->
+<script>
+  $(function () {
+    $("#footer-placeholder").load("/HTML/Items/footer.html");
+  });
+</script>

@@ -1,8 +1,4 @@
-html {
-  background-color: var(--color-primary);
-  caret-color: transparent;
-  user-select: none;
-}
+
 
 main {
   margin: 10rem 0 0 0;
@@ -70,7 +66,7 @@ main {
 
 /* Products Shuffle */
 
-#products {
+#carousel {
   margin: 0 2rem 0 2rem;
   display: flex;
   flex-direction: column;
@@ -510,9 +506,9 @@ main {
   }
 
 
-  /* Product Shuffle */
+  /* Products Shuffle */
 
-  #products {
+  #carousel {
     margin: 0 0 0 0;
   }
   

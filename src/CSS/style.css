@@ -5,8 +5,11 @@
 
 html {
   font-size: 62.5%;
-  overscroll-behavior: none;
   color: var(--color-secondary);
+  background-color: var(--color-primary);
+  overscroll-behavior: none;
+  caret-color: transparent;
+  user-select: none;
 }
 
 body {
@@ -33,7 +36,7 @@ h3 {
   /* property: value */
   font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 5em;
+  font-size: 5rem;
   margin: 0 0 8px;
 }
 
@@ -81,6 +84,16 @@ div {
   font-size: 1.8rem;
 }
 
+label {
+  font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+input {
+  cursor: pointer;
+}
+
 a {
   /* property: value */
   font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
@@ -96,6 +109,7 @@ button {
   font-size: 2.4rem;
 }
 
+
 span {
   font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
 }
@@ -110,7 +124,7 @@ span {
   }
 
   h3 {
-    font-size: 3em;
+    font-size: 3rem;
   }
 
   h4 {
@@ -141,4 +155,7 @@ span {
     font-size: 1.4rem;
   }
 
+  label {
+    font-size: 1.4rem;
+  }
 }
