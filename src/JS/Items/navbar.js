@@ -51,3 +51,33 @@ function handleEscKey(event) {
         toggleNav();
     }
 }
+
+
+
+// LOGIN BTN
+
+const loginBtn = document.getElementById("login-btn");
+const loginDD = document.getElementById("login-dd");
+var login = false;
+
+window.addEventListener("load", function() {
+    if (login === true) {
+        loginBtn.innerHTML = "<i class=\"fa-solid fa-user\"></i> Account";
+    } else {
+        loginBtn.innerHTML = "<i class=\"fa-solid fa-user\"></i> Sign in";
+    }
+});
+
+loginBtn.addEventListener("click", function() {
+    if (login === true) {
+        window.location.href = "/HTML/Pages/account.html";
+    } else {
+        console.log("clicked");
+        loginDD.classList.toggle("open");
+        toggleNav();
+
+        window.addEventListener("scroll", function() {
+            loginDD.classList.remove("open");
+        });
+    }
+});

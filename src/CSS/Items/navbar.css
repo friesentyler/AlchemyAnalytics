@@ -74,6 +74,34 @@ nav {
     width: calc(100% + 5px);
 }
 
+/* Sign In Menu */
+
+.login-dropdown {
+    position: absolute;
+    background: var(--color-card);
+    border: 3px solid var(--color-secondary);
+    top: -10rem;
+    right: 3rem;
+    width: 350px;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition-duration: 0.5s;
+}
+
+.login-dropdown h5 {
+    color: var(--color-secondary);
+    margin: 1rem 1rem 2rem 1rem;
+}
+
+.login-dropdown.open {
+    opacity: 1;
+    pointer-events: all;
+    top: 8rem;
+}
+
+
+
 /* Nav Icon */
 
 #navpopup {
@@ -188,6 +216,9 @@ nav {
     left: 4px;
     background-color: var(--color-main);
   }
+
+
+/* Media Queries */
 
 @media (max-width: 750px) {
 

@@ -140,7 +140,7 @@
 }
 
 .products .card.active .card-scroll {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 97%;
   padding: 1.5rem 1.5rem 0 1.5rem;
 }
@@ -190,35 +190,7 @@
   opacity: 1;
 }
 
-/* ---------- */
-/* PAGINATION */
-/* ---------- */
 
-.pagination {
-    width: 100%;
-    text-align: center;
-    margin: 3rem 0 3rem 1.5rem;
-}
-
-.pagination button {
-    color: var(--color-secondary);
-    border: 3px solid transparent;
-    font-size: 2.6rem;
-    font-weight: 900;
-    border-radius: 4px;
-    padding: 0.6rem;
-    transition-duration: 0.5s;
-}
-
-.pagination button:hover {
-    border: 3px solid var(--color-ml);
-}
-
-.pagination button.active {
-    border: 3px solid var(--color-main);
-    background: var(--color-main);
-    color: var(--font-color);
-}
 
 
 
@@ -260,9 +232,5 @@
     padding: 2rem;
   }
 
-  /* Pagination */
 
-  .pagination {
-    margin: 3rem 0 3rem 0;
-  }
 }
