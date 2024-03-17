@@ -38,6 +38,10 @@ viewBtns.forEach(function (btn) {
         xbtn.classList.toggle("active");
         btn.innerText = btn.innerText.includes("View") ? "Add to cart" : "View Item";
 
+        if (btn.innerText.includes("Add")) {
+            toggleCart();
+        }
+
     });
 
     xbtn.addEventListener("click", function () {
@@ -75,3 +79,5 @@ filterBtn.addEventListener("click", function () {
     let filter = document.getElementById("filter");
     filter.classList.toggle("active");
 });
+
+// Cart Btn

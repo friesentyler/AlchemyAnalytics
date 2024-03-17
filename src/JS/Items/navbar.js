@@ -30,9 +30,9 @@ window.addEventListener("scroll", toggleNav);
 window.addEventListener("keydown", handleEscKey);
 
 
-function handleClick () {
+function handleClick() {
     // Check if the clicked element is the dialog itself or its backdrop
-        if (hamburger === 1) {
+    if (hamburger === 1) {
         // Clicked on the dialog or its backdrop, trigger toggleNav
         toggleNav();
     }
@@ -43,7 +43,7 @@ function toggleNav() {
         nav.classList.remove("open");
         navPopup.classList.remove("open");
         hamburger = 0;
-        }
+    }
 }
 
 function handleEscKey(event) {
@@ -58,26 +58,47 @@ function handleEscKey(event) {
 
 const loginBtn = document.getElementById("login-btn");
 const loginDD = document.getElementById("login-dd");
-var login = false;
+var login = true;
 
-window.addEventListener("load", function() {
-    if (login === true) {
+$(document).ready(function () {
+    if (login == true) {
         loginBtn.innerHTML = "<i class=\"fa-solid fa-user\"></i> Account";
+
     } else {
         loginBtn.innerHTML = "<i class=\"fa-solid fa-user\"></i> Sign in";
+
     }
 });
 
-loginBtn.addEventListener("click", function() {
+loginBtn.addEventListener("click", function () {
     if (login === true) {
         window.location.href = "/HTML/Pages/account.html";
     } else {
-        console.log("clicked");
         loginDD.classList.toggle("open");
         toggleNav();
 
-        window.addEventListener("scroll", function() {
+        window.addEventListener("scroll", function () {
             loginDD.classList.remove("open");
         });
     }
 });
+
+// Show cart icon on shop page
+
+const cart = document.getElementById("cart");
+const cartItems = document.querySelector(".cart .items");
+
+if (window.location.pathname.includes("shop")) {
+    cart.style.display = "inline-block";
+
+    toggleCart();
+}
+
+function toggleCart() {
+    let val = cart.getAttribute("data-items");
+
+    if (val > 0) {
+        cartItems.style.display = "block";
+        cartItems.innerHTML = val;
+    }
+}

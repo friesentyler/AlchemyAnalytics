@@ -12,28 +12,42 @@
     TODO: Todo
  -->
 
- <link rel="icon" type="image/png" href="/Images/logo.png" />
 <script src="https://kit.fontawesome.com/3116842acc.js" crossorigin="anonymous"></script>
 <script src="/JS/Items/navbar.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<link rel="stylesheet" type="text/css" href="/CSS/Items/navbar.css">
+<link rel="stylesheet" type="text/css" href="/CSS/Items/navbar.css" />
 
 <nav>
-
     <!-- Logo -->
     <div class="logo" id="logo">
         <a href="/">
-            <img class="img" src="/Images/logo.png" alt="Website Logo">
+            <img class="img" src="/Images/logo.png" alt="Website Logo" />
             <h5 class="">Alchemy Analytics</h5>
         </a>
     </div>
 
     <div id="navpopup" onclick="handleClick()"></div>
-    <div class="nav-btns">
-        <!-- Main Navbar Navigation -->
+
+    <div class="nav-right">
+        <div class="nav-btns nav">
+            <!-- Main Navbar Navigation -->
             <a href="/" class=""><button><i class="fa-solid fa-house"> </i>Home</button></a>
             <a href="/HTML/Pages/shop.html" class=""><button><i class="fa-solid fa-shop"> </i>Shop</button></a>
-            <a><button id="login-btn"><i class="fa-solid fa-user"> </i>Sign in</button></a>
+            <a><button id="login-btn">
+                    <i class="fa-solid fa-user"> </i>Sign in
+                </button></a>
+        </div>
+
+        <!-- Cart for items, shows only on shop page -->
+        <a href="/">
+            <!-- Target the cart ID and change its attribute to number of items in cart. 
+            A limit should be set on how many items should be added to the cart. -->
+            <button class="cart" id="cart" data-items="0">
+                <i class="fa-solid fa-cart-shopping">
+                    <span class="items"></span>
+                </i>
+            </button>
+        </a>
     </div>
 
     <!-- Nav Icon -->
@@ -45,6 +59,6 @@
 
     <div class="login-dropdown" id="login-dd">
         <h5>Sign in with Google</h5>
+        <!-- Google Sign In BTN here. -->
     </div>
-
 </nav>
