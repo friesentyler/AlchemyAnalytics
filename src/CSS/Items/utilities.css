@@ -68,9 +68,8 @@
   position: fixed;
   width: 30px;
   height: 25px;
-  top: -5%;
+  top: -8%;
   left: 97%;
-  z-index: 9;
   opacity: 0;
   pointer-events: none;
 }
@@ -90,10 +89,12 @@
 
 .x-btn.active span:nth-child(1) {
   transform: rotate(45deg);
+  translate: 0 10px;
 }
 
 .x-btn.active span:nth-child(2) {
   transform: rotate(-45deg);
+  translate: 0 10px;
 }
 
 /* ---------- */
@@ -128,9 +129,9 @@
 
 @media (max-width: 750px) {
   .x-btn {
-    left: 95%;
+    left: 92%;
   }
-  
+
   /* Pagination */
 
   .pagination {
@@ -140,7 +141,7 @@
 
 @media (max-height: 550px) {
   .x-btn {
-    top: 20px;
-    left: 102%;
+    top: 10px;
+    left: 95%;
   }
 }

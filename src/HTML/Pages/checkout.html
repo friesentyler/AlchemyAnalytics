@@ -1,0 +1,126 @@
+<!-- Andrew Forster
+   - Project Date
+   - Project
+   - Sources:
+   + 
+   + 
+
+   Better Comments Extension
+    ! Important
+    * Highlight
+    ? Question
+    TODO: Todo
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link rel="icon" type="image/png" href="/Images/logo.png" />
+
+    <!-- JQUERY LINKING -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <!--*----------------------------->
+    <!--* SCRIPTS & OTHER LIBRARIES -->
+    <!--*----------------------------->
+
+
+    <!-- Scroll Animations -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/Scroll-Animator/sa@v0.1.3-beta/scrollanimator.css" />
+    <script src="https://cdn.jsdelivr.net/gh/Scroll-Animator/sa@v0.1.3-beta/scrollanimator.js"></script>
+
+    <!--*------------------------------------>
+    <!--* END OF SCRIPTS & OTHER LIBRARIES -->
+    <!--*------------------------------------>
+
+    <!--*---------------------->
+    <!--* CSS PAGE LINKING'S -->
+    <!--*---------------------->
+    <link rel="stylesheet" type="text/css" href="/CSS/Items/utilities.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/Items/palette.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/Pages/checkout.css" />
+
+    <!--*------------------------>
+    <!--* End of CSS LINKING'S -->
+    <!--*------------------------>
+
+    <!-- Navbar -->
+    <nav id="nav-placeholder"></nav>
+</head>
+
+<body>
+    <div id="cover-scrn" aria-hidden="true"></div>
+
+    <div class="checkout-container">
+
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h2>Order Summary:</h2>
+            </div>
+
+            <!-- This is where all cart items will be displayed. -->
+            <div class="cart-items">
+                <div class="c-item">
+                    <div class="x-btn"><span></span><span></span></div>
+                    <img src="/Images/product.png" alt="Item Image" />
+                    <h4 class="ci-name">Aggression</h4>
+                    <h6 class="ci-price">$5</h6>
+                </div>
+                <div class="c-item">
+                    <div class="x-btn"><span></span><span></span></div>
+                    <img src="/Images/product.png" alt="Item Image" />
+                    <h4 class="ci-name">Aggression</h4>
+                    <h6 class="ci-price">$5</h6>
+                </div>
+                <div class="c-item">
+                    <div class="x-btn"><span></span><span></span></div>
+                    <img src="/Images/product.png" alt="Item Image" />
+                    <h4 class="ci-name">Aggression</h4>
+                    <h6 class="ci-price">$5</h6>
+                </div>
+            </div>
+            <div class="checkout-footer">
+                <div class="cf-total">
+                    <!-- Target the checkout-total ID to display total checkout price -->
+                    <h5>Total: $<span id="checkout-total">15</span></h5>
+
+                </div>
+                <div class="payment-btns">
+                    <button class="stripe" id="stripe"><i class="fa-brands fa-cc-stripe"></i> Pay with Stripe</button>
+                    <!-- <button class="paypal" id="paypal"><i class="fa-brands fa-cc-paypal"></i> PayPal</button> -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+    <div id="footer-placeholder"></div>
+</body>
+
+</html>
+
+<!-------------------->
+<!-- Navbar JS Code -->
+<!-------------------->
+<script>
+    $(function () {
+        $("#nav-placeholder").load("/HTML/Items/navbar.html");
+    });
+</script>
+<!-- Footer JS Code -->
+<script>
+    $(function () {
+        $("#footer-placeholder").load("/HTML/Items/footer.html");
+    });
+</script>

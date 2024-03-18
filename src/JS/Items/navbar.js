@@ -88,8 +88,9 @@ loginBtn.addEventListener("click", function () {
 const cart = document.getElementById("cart");
 const cartItems = document.querySelector(".cart .items");
 
-if (window.location.pathname.includes("shop")) {
+if (window.location.pathname.includes("shop") && cart.getAttribute("data-items") > 0) {
     cart.style.display = "inline-block";
+    cart.style.pointerEvents = "all";
 
     toggleCart();
 }
