@@ -91,6 +91,34 @@
   transition-duration: 0.2s;
 }
 
+/* ! On item/product remove */
+
+.c-item.remove {
+    animation: remove 0.8s forwards;
+}
+
+@keyframes remove {
+    0% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    30% {
+        opacity: 1;
+        transform: translateX(10%);
+    }
+    90% {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+}
+
+
+
 /* On Item Hover */
 
 .c-item:hover .x-btn span, .c-item:focus-visible .x-btn span {
