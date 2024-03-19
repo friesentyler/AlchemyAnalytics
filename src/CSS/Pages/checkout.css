@@ -161,6 +161,7 @@
     font-weight: 900;
     text-transform: uppercase;
     transition-duration: 0.5s;
+    vertical-align: middle;
 }
 
 .payment-btns button:hover {

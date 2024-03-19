@@ -16,6 +16,5 @@ cards.forEach(card => {
             cardChild.style.transitionDuration = "0.5s";
         }        cardChild.style.height = cardChild.style.height ? null : cardChild.scrollHeight + 'px';
 
-        console.log(cardChild.style.transitionDuration);
     })
 })

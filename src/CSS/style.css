@@ -16,6 +16,22 @@ body {
   margin: 0 0 0 0;
 }
 
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+.i-w {
+  fill: #fff;
+}
+
+.i-s {
+  fill: var(--color-secondary);
+}
+
+
+
 h1 {
   /* property: value */
   font-family: Inconsolata, Montserrat, Helvetica, sans-serif;

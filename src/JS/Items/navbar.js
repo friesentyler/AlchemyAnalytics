@@ -1,3 +1,5 @@
+
+
 const navPopup = document.getElementById("navpopup");
 const navIcon = document.getElementById("nav-icon");
 const nav = document.querySelector("nav");
@@ -58,15 +60,20 @@ function handleEscKey(event) {
 
 const loginBtn = document.getElementById("login-btn");
 const loginDD = document.getElementById("login-dd");
-var login = true;
+var login = false;
 
 $(document).ready(function () {
     if (login == true) {
-        loginBtn.innerHTML = "<i class=\"fa-solid fa-user\"></i> Account";
-
+        loginBtn.innerHTML = `
+        <svg class="icon i-w" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+        Account
+        `;
+        
     } else {
-        loginBtn.innerHTML = "<i class=\"fa-solid fa-user\"></i> Sign in";
-
+        loginBtn.innerHTML = `
+        <svg class="icon i-w" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+        Sign in
+        `;
     }
 });
 
@@ -87,6 +94,7 @@ loginBtn.addEventListener("click", function () {
 
 const cart = document.getElementById("cart");
 const cartItems = document.querySelector(".cart .items");
+
 
 if (window.location.pathname.includes("shop") && cart.getAttribute("data-items") > 0) {
     cart.style.display = "inline-block";
