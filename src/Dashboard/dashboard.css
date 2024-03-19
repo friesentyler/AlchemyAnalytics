@@ -1,0 +1,246 @@
+/* Nav section */
+
+nav {
+  background-color: var(--color-secondary);
+  width: 100%;
+  height: 6rem;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+
+  margin: 1.3rem 0rem 1.3rem 1rem;
+  white-space: nowrap;
+}
+
+/* Logo Section */
+
+.logo h5 {
+  display: inline-block;
+  margin: 0 0 0 0;
+  vertical-align: middle;
+  color: white;
+}
+
+.logo .img {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1rem;
+  vertical-align: middle;
+}
+
+/* Side Nav */
+
+aside {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-secondary);
+  width: 5rem;
+  height: 100vh;
+  padding: 6rem 0 0 0;
+  align-items: center;
+  justify-content: middle;
+}
+
+aside img {
+  width: 3rem;
+  height: 3rem;
+}
+
+aside button {
+  padding: 0 0 0 0;
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  position: relative;
+}
+
+aside button .tooltip {
+  position: absolute;
+  white-space: nowrap;
+  padding: 1rem 1rem 0 1rem;
+  top: -0.5rem;
+  left: 5rem;
+  height: 30px;
+  background-color: var(--color-ml);
+  z-index: -1;
+  border-radius: 0.5rem;
+  visibility: hidden;
+  opacity: 0;
+  transition-duration: 0.2s;
+}
+
+aside button .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--color-ml) transparent transparent;
+}
+
+aside button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Main */
+
+main {
+  margin: 8rem 0 0 5rem;
+}
+
+/* Dash cards */
+
+.card-container {
+  width: 95%;
+  margin: 2rem auto;
+  flex-wrap: wrap;
+
+  user-select: text;
+}
+
+.card {
+  margin: 1rem 1rem;
+  width: 400px;
+}
+
+.main-card {
+  width: 95%;
+  margin: 2rem auto;
+}
+
+/* Item Viewer */
+
+#cover-scrn {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-secondary-o);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  transition-duration: 0.5s;
+}
+
+#cover-scrn.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.products .p-viewer {
+  width: 330px;
+  margin: 1.5rem;
+}
+
+.products .card {
+  transform: translate(0%, 0%);
+  margin: 0 0 0 0;
+  transition-duration: 0s;
+  width: 90%;
+}
+
+.products .card.active {
+  align-self: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 10rem auto 0 auto;
+  height: 70%;
+  width: 80%;
+  z-index: 8;
+  padding: 0 0 0 0;
+}
+
+.products .card.active .card-scroll {
+  overflow-y: auto;
+  height: 97%;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+/* Edits Image Values in Product Viewer */
+.products .card.active img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.products .card.active .price-lbl {
+  display: inline-block;
+  margin: 0 0 0 0;
+}
+
+.products .card.active h5 {
+  display: inline-block;
+}
+
+.products .card button {
+  transition-duration: 0s;
+}
+
+.products .card.active button {
+  position: absolute;
+  bottom: 0;
+  width: 95%;
+  left: 49.35%;
+  transform: translate(-50%, 0%);
+  margin: 0 0 1rem 0;
+}
+
+/* Edits Description Height in Product Viewer */
+
+.products .card .p-desc {
+  margin: 0 0 0 0;
+  height: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition-duration: 0.5s;
+}
+.products .card.active .p-desc {
+  margin: 2rem 2rem 8rem 2rem;
+  max-height: 1000px;
+  height: auto;
+  opacity: 1;
+}
+
+
+.remove {
+    display: none;
+}
+
+.editable {
+  caret-color: black;
+}
+
+#products button.pos1 {
+    left: 115px;
+
+    width: 200px;
+}
+
+#products button.pos2 {
+    left: 340px;
+    width: 200px;
+    background-color: var(--color-green);
+    border: 2px solid var(--color-green);
+    transition-duration: 0.2s;
+}
+
+#products button.pos2:hover {
+    background-color: var(--color-green-h);
+}
+
+#add {
+    width: 25%;
+}
