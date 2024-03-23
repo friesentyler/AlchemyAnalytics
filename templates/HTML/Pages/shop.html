@@ -11,14 +11,14 @@
     ? Question
     TODO: Todo
  -->
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shop</title>
-    <link rel="icon" type="image/png" href="/Images/logo.png" />
+    <link rel="icon" type="image/png" href="{% static 'Images/logo.png' %}" />
 
     <!-- JQUERY LINKING -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -27,7 +27,7 @@
     <!--* SCRIPTS & OTHER LIBRARIES -->
     <!--*----------------------------->
 
-    <script src="/JS/Pages/shop.js" defer></script>
+    <script src="{% static 'JS/Pages/shop.js' %}" defer></script>
 
     <!-- Scroll Animations -->
     <link
@@ -45,10 +45,10 @@
     <!--* CSS PAGE LINKING'S -->
     <!--*---------------------->
 
-    <link rel="stylesheet" type="text/css" href="/CSS/Pages/shop.css" />
-    <link rel="stylesheet" type="text/css" href="/CSS/Items/utilities.css" />
-    <link rel="stylesheet" type="text/css" href="/CSS/style.css" />
-    <link rel="stylesheet" type="text/css" href="/CSS/Items/palette.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Pages/shop.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Items/utilities.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Items/palette.css' %}" />
 
     <!--*------------------------>
     <!--* End of CSS LINKING'S -->
@@ -64,7 +64,7 @@
     <main>
       <section class="shop-main">
         <div class="img-container">
-          <img src="/Images/shop.png" alt="Shop background image" />
+          <img src="{% static 'Images/shop.png' %}" alt="Shop background image" />
         </div>
       </section>
     </main>
@@ -117,7 +117,7 @@
               <div class="card">
                 <div class="x-btn xpv"><span></span><span></span></div>
               <div class="card-scroll">
-                  <img src="/Images/product.png" alt="Image of product" />
+                  <img src="{% static 'Images/product.png' %}" alt="Image of product" />
                   <h5>Advance Decline</h5>
                   <p class="price-lbl">$<span id="price">49.99</span></p>
                   <p class="p-desc">
@@ -135,7 +135,7 @@
               <div class="card">
                 <div class="x-btn xpv"><span></span><span></span></div>
               <div class="card-scroll">
-                  <img src="/Images/product.png" alt="Image of product" />
+                  <img src="{% static 'Images/product.png' %}" alt="Image of product" />
                   <h5>Advance Decline</h5>
                   <p class="price-lbl">$49.99</p>
                   <p class="p-desc">
@@ -153,7 +153,7 @@
               <div class="card">
                 <div class="x-btn xpv"><span></span><span></span></div>
               <div class="card-scroll">
-                  <img src="/Images/product.png" alt="Image of product" />
+                  <img src="{% static 'Images/product.png' %}" alt="Image of product" />
                   <h5>Advance Decline</h5>
                   <p class="price-lbl">$49.99</p>
                   <p class="p-desc">
@@ -225,12 +225,12 @@
 <!-------------------->
 <script>
   $(function () {
-    $("#nav-placeholder").load("/HTML/Items/navbar.html");
+    $("#nav-placeholder").load("{% include 'HTML/Items/navbar.html' %}");
   });
 </script>
 <!-- Footer JS Code -->
 <script>
   $(function () {
-    $("#footer-placeholder").load("/HTML/Items/footer.html");
+    $("#footer-placeholder").load("{% include 'HTML/Items/footer.html' %}");
   });
 </script>

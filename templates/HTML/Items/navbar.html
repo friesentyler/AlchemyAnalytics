@@ -11,16 +11,16 @@
     ? Question
     TODO: Todo
  -->
-
-<script src="/JS/Items/navbar.js"></script>
-<link rel="stylesheet" type="text/css" href="/CSS/Items/navbar.css" />
+{% load static %}
+<script src="{% static 'JS/Items/navbar.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/Items/navbar.css' %}" />
 <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
 
 <nav>
     <!-- Logo -->
     <div class="logo" id="logo">
-        <a href="/">
-            <img class="img" src="/Images/logo.png" alt="Website Logo" />
+        <a href="/static">
+            <img class="img" src="{% static 'Images/logo.png' %}" alt="Website Logo" />
             <h5 class="">Alchemy Analytics</h5>
         </a>
     </div>
@@ -30,23 +30,23 @@
     <div class="nav-right">
         <div class="nav-btns nav">
             <!-- Main Navbar Navigation -->
-            <a href="/" class=""><button>
-                <img src="/Images/SVGS/home.svg" class="icon">
+            <a href="{% url 'index' %}" class=""><button>
+                <img src="{% static 'Images/SVGS/home.svg' %}" class="icon">
                 Home</button></a>
 
-            <a href="/HTML/Pages/shop.html" class=""><button>
-            <img src="/Images/SVGS/shop.svg" class="icon">
+            <a href="{% url 'shop' %}" class=""><button>
+            <img src="{% static 'Images/SVGS/shop.svg' %}" class="icon">
             Shop</button></a>
             
             <a><button id="login-btn">
-                <img src="/Images/SVGS/login.svg" class="icon">
+                <img src="{% static 'Images/SVGS/login.svg' %}" class="icon">
                 Sign in
             </button></a>
             
         </div>
 
         <!-- Cart for items, shows only on shop page -->
-        <a class="cart-anchor" href="/HTML/Pages/checkout.html">
+        <a class="cart-anchor" href="/templates/HTMLlates/HTML/Pages/checkout.html">
             <!-- Target the cart ID and change its attribute to number of items in cart. 
             A limit should be set on how many items should be added to the cart. -->
             <button class="cart" id="cart" data-items="0">
