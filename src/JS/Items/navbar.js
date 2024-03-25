@@ -60,7 +60,7 @@ function handleEscKey(event) {
 
 const loginBtn = document.getElementById("login-btn");
 const loginDD = document.getElementById("login-dd");
-var login = false;
+var login = true;
 
 $(document).ready(function () {
     if (login == true) {
