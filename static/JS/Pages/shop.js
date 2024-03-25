@@ -128,11 +128,12 @@ sorter.addEventListener("click", function () {
 
 let checkboxes = document.querySelectorAll("#filter input[type='checkbox']");
 
+
 checkboxes.forEach(function (checkbox) {
     checkbox.addEventListener("change", function () {
         if (checkbox.checked) {
             let cbQueryName = checkbox.getAttribute("data-queryName");
-            urlQueryString("searchFor" ,cbQueryName);
+            urlQueryString("searchFor" , cbQueryName);
         }
     });
 });
