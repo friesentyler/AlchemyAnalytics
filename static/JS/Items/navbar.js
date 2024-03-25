@@ -79,7 +79,7 @@ $(document).ready(function () {
 
 loginBtn.addEventListener("click", function () {
     if (login === true) {
-        window.location.href = "/HTML/Pages/account.html";
+        window.location.href = "../../../templates/HTML/Pages/account.html";
     } else {
         loginDD.classList.toggle("open");
         toggleNav();
