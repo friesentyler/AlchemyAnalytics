@@ -14,12 +14,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Checkout</title>
-    <link rel="icon" type="image/png" href="/Images/logo.png" />
+    <link rel="icon" type="image/png" href="{% static 'Images/logo.png' %}" />
 
     <!-- JQUERY LINKING -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -28,7 +28,7 @@
     <!--* SCRIPTS & OTHER LIBRARIES -->
     <!--*----------------------------->
 
-    <script src="/JS/Pages/checkout.js" defer></script>
+    <script src="{% static 'JS/Pages/checkout.js' %}" defer></script>
   <script src="{% static 'JS/Items/navbar.js' %}" defer></script>
     <!-- Scroll Animations -->
     <link rel="stylesheet" type="text/css"
@@ -42,10 +42,10 @@
     <!--*---------------------->
     <!--* CSS PAGE LINKING'S -->
     <!--*---------------------->
-    <link rel="stylesheet" type="text/css" href="/CSS/Items/utilities.css" />
-    <link rel="stylesheet" type="text/css" href="/CSS/style.css" />
-    <link rel="stylesheet" type="text/css" href="/CSS/Items/palette.css" />
-    <link rel="stylesheet" type="text/css" href="/CSS/Pages/checkout.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Items/utilities.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Items/palette.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Pages/checkout.css' %}" />
 
     <!--*------------------------>
     <!--* End of CSS LINKING'S -->
@@ -69,19 +69,19 @@
             <div class="cart-items">
                 <div class="c-item">
                     <div class="x-btn"><span></span><span></span></div>
-                    <img src="/Images/product.png" alt="Item Image" />
+                    <img src="{% static 'Images/product.png' %}" alt="Item Image" />
                     <h4 class="ci-name">Aggression</h4>
                     <h6 class="ci-price">$5</h6>
                 </div>
                 <div class="c-item">
                     <div class="x-btn"><span></span><span></span></div>
-                    <img src="/Images/product.png" alt="Item Image" />
+                    <img src="{% static 'Images/product.png' %}" alt="Item Image" />
                     <h4 class="ci-name">Aggression</h4>
                     <h6 class="ci-price">$5</h6>
                 </div>
                 <div class="c-item">
                     <div class="x-btn"><span></span><span></span></div>
-                    <img src="/Images/product.png" alt="Item Image" />
+                    <img src="{% static 'Images/product.png' %}" alt="Item Image" />
                     <h4 class="ci-name">Aggression</h4>
                     <h6 class="ci-price">$5</h6>
                 </div>
@@ -116,12 +116,12 @@
 <!-------------------->
 <script>
     $(function () {
-        $("#nav-placeholder").load("/HTML/Items/navbar.html");
+        $("#nav-placeholder").load("{% include 'HTML/Items/navbar.html' %}");
     });
 </script>
 <!-- Footer JS Code -->
 <script>
     $(function () {
-        $("#footer-placeholder").load("/HTML/Items/footer.html");
+        $("#footer-placeholder").load("{% include 'HTML/Items/footer.html' %}");
     });
 </script>

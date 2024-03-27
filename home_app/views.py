@@ -5,3 +5,6 @@ def index(request):
 
 def shop(request):
     return render(request, 'HTML/Pages/shop.html', {})
+
+def checkout(request):
+    return render(request, 'HTML/Pages/checkout.html', {})
