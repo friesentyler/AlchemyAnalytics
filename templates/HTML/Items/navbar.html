@@ -45,11 +45,15 @@
                     Shop
                 </button>
             </a>
-
+            <!-- the blocks of python code sit inside the bracket and percent signs. Essentially it is
+             just and if condition checking if the user is logged in. If they are it will render the part directly
+             below this comment. Otherwise it renders the content underneath the else block. You can play around with the
+             styling of this until you get it how you like. The provider_login_url and url tag for account_logout are really
+             important to ensure it works properly. Also for logging out it seems as though the only way for to be successful
+             is to include the csrf_token bit. -->
             {% if user.is_authenticated %}
                 <!-- Show user account information if authenticated -->
                 <p>Welcome, {{ user.username }}</p>
-                <!--<a href="{% url 'account_logout' %}" class="sign-in-button">Logout</a>-->
                 <form method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}
                     <button type="submit" class="logout-button">Logout</button>
