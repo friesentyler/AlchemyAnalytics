@@ -10,8 +10,8 @@ def shop(request):
 def checkout(request):
     return render(request, 'HTML/Pages/checkout.html', {})
 
-def purchasedproducts(request):
+def account(request):
     if request.user.is_authenticated:
-        return render(request, 'HTML/Pages/purchasedproducts.html', {})
+        return render(request, 'HTML/Pages/account.html', {})
     else:
         raise PermissionDenied()
