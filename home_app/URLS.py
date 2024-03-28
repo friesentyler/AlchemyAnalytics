@@ -21,5 +21,6 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('shop', views.shop, name='shop'),
-    path('checkout', views.checkout, name="checkout")
+    path('checkout', views.checkout, name="checkout"),
+    path('purchasedproducts', views.purchasedproducts, name="purchasedproducts")
 ]
