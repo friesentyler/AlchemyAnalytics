@@ -27,11 +27,10 @@ def download_file(request, file_name):
     file_path = os.path.join(custom_directory, file_name)
 
     # Ensure user is authenticated and owns the product
-    ## ehh fix this, it needs to be able to check if the user owns the product. Essentially check if the user owns
-    # a foreign key to the specific product they want to download.
-    user_owns_product = models.UserProduct.objects.filter(user=request.user, product__file__icontains=file_name)
-    print("here")
-    if not request.user.is_authenticated and not user_owns_product:
+    if not request.user.is_authenticated:
+        raise PermissionDenied()
+    user_owns_product = models.UserProduct.objects.filter(user=request.user, product__file__icontains=file_name).exists()
+    if not user_owns_product:
         raise PermissionDenied()
 
     # Check if the file exists
