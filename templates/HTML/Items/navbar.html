@@ -51,9 +51,14 @@
              styling of this until you get it how you like. The provider_login_url and url tag for account_logout are really
              important to ensure it works properly. Also for logging out it seems as though the only way for to be successful
              is to include the csrf_token bit. -->
+             <!-- Show user account information if authenticated -->
             {% if user.is_authenticated %}
-                <!-- Show user account information if authenticated -->
-                <p>Welcome, {{ user.username }}</p>
+                <a href="{% url 'account' %}">
+                    <button>
+                        <img src="{% static 'Images/SVGS/login.svg' %}" class="icon">
+                        Account
+                    </button>
+                </a>
                 <form method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}
                     <button type="submit" class="logout-button">Logout</button>
@@ -61,7 +66,7 @@
             {% else %}
                 <!-- Show sign-in button if not authenticated -->
                 <a href="{% provider_login_url 'google' %}">
-                    <button id="login-btn">
+                    <button>
                         <img src="{% static 'Images/SVGS/login.svg' %}" class="icon">
                         Sign in
                     </button>
@@ -87,10 +92,5 @@
         <span></span>
         <span></span>
         <span></span>
-    </div>
-
-    <div class="login-dropdown" id="login-dd">
-        <h5>Sign in with Google</h5>
-        <!-- Google Sign In BTN here. -->
     </div>
 </nav>
