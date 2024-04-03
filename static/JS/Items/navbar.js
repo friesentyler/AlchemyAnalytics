@@ -77,4 +77,3 @@ function toggleCart() {
         cartItems.innerHTML = val;
     }
 }
-console.log("test")

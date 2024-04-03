@@ -63,8 +63,7 @@ nav {
     font-weight: 600;
 }
 
-.nav-btns a button::after, 
-.nav-btns form button::after {
+.nav-btns a button::after {
     content: '';
     display: block;
     margin: 7px 0 0 0;
@@ -73,8 +72,7 @@ nav {
     background: var(--color-main);
     transition-duration: 0.5s;
 }
-.nav-btns a button:hover::after, 
-.nav-btns form button:hover::after {
+.nav-btns a button:hover::after {
     width: calc(100% + 5px);
 }
 

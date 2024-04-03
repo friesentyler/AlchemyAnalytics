@@ -15,14 +15,14 @@
 {% load socialaccount %}
 {% load allauth %}
 <script src="{% static 'JS/Items/navbar.js' %}"></script>
-<link rel="stylesheet" type="text/css" href="{% static 'CSS/Items/navbar.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/Items/navbar.css' %}" />
 <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
 
 <nav>
     <!-- Logo -->
     <div class="logo" id="logo">
         <a href="{% url 'index' %}">
-            <img class="img" src="{% static 'Images/logo.png' %}" alt="Website Logo"/>
+            <img class="img" src="{% static 'Images/logo.png' %}" alt="Website Logo" />
             <h5 class="">Alchemy Analytics</h5>
         </a>
     </div>
@@ -51,26 +51,28 @@
              styling of this until you get it how you like. The provider_login_url and url tag for account_logout are really
              important to ensure it works properly. Also for logging out it seems as though the only way for to be successful
              is to include the csrf_token bit. -->
-             <!-- Show user account information if authenticated -->
+            <!-- Show user account information if authenticated -->
             {% if user.is_authenticated %}
-                <a href="{% url 'account' %}">
-                    <button>
-                        <img src="{% static 'Images/SVGS/login.svg' %}" class="icon">
-                        Account
-                    </button>
-                </a>
+            <a href="{% url 'account' %}">
+                <button>
+                    <img src="{% static 'Images/SVGS/login.svg' %}" class="icon">
+                    Account
+                </button>
+            </a>
+            <a>
                 <form method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}
                     <button type="submit" class="logout-button">Logout</button>
                 </form>
+            </a>
             {% else %}
-                <!-- Show sign-in button if not authenticated -->
-                <a href="{% provider_login_url 'google' %}">
-                    <button>
-                        <img src="{% static 'Images/SVGS/login.svg' %}" class="icon">
-                        Sign in
-                    </button>
-                </a>
+            <!-- Show sign-in button if not authenticated -->
+            <a href="{% provider_login_url 'google' %}">
+                <button>
+                    <img src="{% static 'Images/SVGS/login.svg' %}" class="icon">
+                    Sign in
+                </button>
+            </a>
             {% endif %}
         </div>
 
@@ -80,7 +82,8 @@
             A limit should be set on how many items should be added to the cart. -->
             <button class="cart" id="cart" data-items="1">
                 <svg class="icon i-w" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                    <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                    <path
+                        d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
                 </svg>
                 <span class="items"></span>
             </button>
