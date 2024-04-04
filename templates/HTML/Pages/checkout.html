@@ -29,7 +29,6 @@
     <!--*----------------------------->
 
     <script src="{% static 'JS/Pages/checkout.js' %}" defer></script>
-  <script src="{% static 'JS/Items/navbar.js' %}" defer></script>
     <!-- Scroll Animations -->
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/gh/Scroll-Animator/sa@v0.1.3-beta/scrollanimator.css" />
@@ -55,7 +54,6 @@
 </head>
 
 <body>
-    <div id="nav-placeholder"></div>
     <div id="cover-scrn" aria-hidden="true"></div>
 
     <div class="checkout-container">
@@ -114,14 +112,6 @@
 <!-------------------->
 <!-- Navbar JS Code -->
 <!-------------------->
-<script>
-    $(function () {
-        $("#nav-placeholder").load("{% include 'HTML/Items/navbar.html' %}");
-    });
-</script>
+{% include 'HTML/Items/navbar.html' %}
 <!-- Footer JS Code -->
-<script>
-    $(function () {
-        $("#footer-placeholder").load("{% include 'HTML/Items/footer.html' %}");
-    });
-</script>
+{% include 'HTML/Items/footer.html' %}

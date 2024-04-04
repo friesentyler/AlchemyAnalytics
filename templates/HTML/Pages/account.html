@@ -28,7 +28,6 @@
      <!--*----------------------------->
  
      <script src="{% static 'JS/Pages/account.js' %}" defer></script>
-   <script src="{% static 'JS/Items/navbar.js' %}" defer></script>
      <!-- Scroll Animations -->
      <link
        rel="stylesheet"
@@ -55,7 +54,6 @@
      <!--*------------------------>
  
      <!-- Navbar -->
-     <nav id="nav-placeholder"></nav>
    </head>
  
    <body>
@@ -181,18 +179,10 @@
    </body>
  </html>
  
- <!-------------------->
- <!-- Navbar JS Code -->
- <!-------------------->
- <script>
-   $(function () {
-     $("#nav-placeholder").load("{% include 'HTML/Items/navbar.html' %}");
-   });
- </script>
- <!-- Footer JS Code -->
- <script>
-   $(function () {
-     $("#footer-placeholder").load("{% include 'HTML/Items/footer.html' %}");
-   });
- </script>
+<!-------------------->
+<!-- Navbar JS Code -->
+<!-------------------->
+{% include 'HTML/Items/navbar.html' %}
+<!-- Footer JS Code -->
+{% include 'HTML/Items/footer.html' %}
  

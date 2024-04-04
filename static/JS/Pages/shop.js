@@ -150,7 +150,41 @@ if (window.location.search.includes("searchFor")) {
 // Pagination
 //-----------
 
+function returnItemsCount() {
+    let products = document.getElementById("products");
+    console.log(products.offsetWidth);
 
+    if ( window.innerWidth <= 800 && window.innerHeight <= 600 ) {
+        return 6;
+    }
+
+    if ( products.offsetWidth <= 720) {
+        return 8;
+    }
+
+    if ( products.offsetWidth <= 1080) {
+        return 10;
+    }
+    return 12;
+}
+function debounce(func){
+    var timer;
+    return function(event){
+      if(timer) clearTimeout(timer);
+      timer = setTimeout(func,100,event);
+    };
+  }
+
+
+let url = new URL(window.location.href);
+const currentPage = url.searchParams.get("page") || 1;
+let itemsPerPage = returnItemsCount();
+
+window.addEventListener("resize", debounce(function () {
+    itemsPerPage = returnItemsCount();
+}));
+
+console.log(itemsPerPage);
     // Update URL
 
 

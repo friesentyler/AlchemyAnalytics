@@ -28,7 +28,7 @@
   <title>Alchemy Analytics</title>
   <link rel="icon" type="image/png" href="{% static 'Images/logo.png' %}" />
 
-  <script src="{% static 'JS/Items/navbar.js' %}" defer></script>
+
 
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
@@ -64,9 +64,6 @@
   <!--*------------------------>
   <!--* End of CSS LINKING'S -->
   <!--*------------------------>
-
-  <!-- Navbar -->
-  <div id="nav-placeholder"></div>
 </head>
 
 <body class="">
@@ -310,7 +307,7 @@
     </div>
   </section>
 
-  <div id="footer-placeholder"></div>
+
 </body>
 
 </html>
@@ -318,14 +315,6 @@
 <!-------------------->
 <!-- Navbar JS Code -->
 <!-------------------->
-<script>
-  $(function () {
-    $("#nav-placeholder").load("{% include 'HTML/Items/navbar.html' %}");
-  });
-</script>
+{% include 'HTML/Items/navbar.html' %}
 <!-- Footer JS Code -->
-<script>
-  $(function () {
-    $("#footer-placeholder").load("{% include 'HTML/Items/footer.html' %}");
-  });
-</script>
+{% include 'HTML/Items/footer.html' %}
