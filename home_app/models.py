@@ -19,7 +19,7 @@ class Product(models.Model):
     date_created = models.DateTimeField(default=timezone.now)
     item_or_product = models.CharField(max_length=100, choices=ITEM_OR_PRODUCT, null=True)
     indicator_or_strategy = models.CharField(max_length=100, choices=INDICATOR_OR_STRATEGY, null=True)
-    image = models.FileField(upload_to='static/Images', default="default_img.txt", null=True)
+    image = models.FileField(upload_to='static/Images', default="/static/Images/product.png", null=True)
     file = models.FileField(upload_to='media/', default="default_file.txt", null=True)
 
     def __str__(self):

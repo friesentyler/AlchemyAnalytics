@@ -120,7 +120,7 @@ slider.addEventListener("touchend", function () {
 // Sort By
 
 let sorter = document.getElementById("sortby");
-let sortOptions = ["Price: Low", "Price: High", "Newest", "Oldest"];
+let sortOptions = ["Oldest", "Price: Low", "Price: High", "Newest"];
 let currentSort;
 
 if (window.location.search.includes("sort")) {
@@ -242,7 +242,7 @@ function updateProducts(data) {
             <div class="card">
                 <div class="x-btn xpv"><span></span><span></span></div>
                 <div class="card-scroll">
-                    <img src="${product.image}" alt="Image of product" />
+                    <img src="${product.image_url}" alt="Image of product" />
                     <h5>${product.name}</h5>
                     <p class="price-lbl">$<span id="price">${product.price}</span></p>
                     <p class="p-desc">
