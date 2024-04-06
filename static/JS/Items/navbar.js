@@ -63,8 +63,6 @@ const cart = document.getElementById("cart");
 const cartItems = document.querySelector(".cart .items");
 
 if (window.location.pathname.includes("shop") && cart.getAttribute("data-items") > 0) {
-    cart.style.display = "inline-block";
-    cart.style.pointerEvents = "all";
 
     toggleCart();
 }
@@ -73,6 +71,8 @@ function toggleCart() {
     let val = cart.getAttribute("data-items");
 
     if (val > 0) {
+        cart.style.display = "inline-block";
+        cart.style.pointerEvents = "all";
         cartItems.style.display = "block";
         cartItems.innerHTML = val;
     }
