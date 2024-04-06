@@ -12,22 +12,36 @@ def shop(request):
     return render(request, 'HTML/Pages/shop.html', {})
 
 def products(request):
+    #image_url = request.build_absolute_uri(settings.STATIC_URL + 'images/my_image.png')
+    page = request.GET.get('page', 1)
     if request.GET:
-        page = request.GET.get('page', '')
         price_low = request.GET.get('price_low', 0)
         price_high = request.GET.get('price_high', float('inf'))
-        result = {
-            'query': page,
-            'price_low': price_low,
-            'price_high': price_high,
-            'results': ['result1', 'result2', 'result3']
-        }
+        result = [{
+            'name': page,
+            'price': price_low,
+            'description': price_high,
+            'image_url': ['result1', 'result2', 'result3'],
+            'item_or_product': "ueet",
+            'indicator_or_strategy': 'euesh'
+        }]
         return JsonResponse(result)
     else:
-        result = {
-            'empty': 'lol its empty'
-        }
-        return JsonResponse(result)
+        page_size = 5
+        offset = (page - 1) * page_size
+        queryset = models.Product.objects.order_by('date_created')
+        newest_entries = queryset[offset:offset + page_size]
+        result = []
+        for entry in newest_entries:
+            result.append({
+                'name': entry.name,
+                'price': entry.price,
+                'description': entry.description,
+                #'image_url': entry.image,
+                'item_or_product': entry.item_or_product,
+                'indicator_or_strategy': entry.indicator_or_strategy
+            })
+        return JsonResponse(result, safe=False)
 
 def checkout(request):
     return render(request, 'HTML/Pages/checkout.html', {})
