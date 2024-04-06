@@ -1,42 +1,45 @@
+
 // Product Viewer
 
-let viewBtns = document.querySelectorAll(".product-btn");
-let coverScrn = document.getElementById("cover-scrn");
+function loadEvents() {
+    let viewBtns = document.querySelectorAll(".product-btn");
+    let coverScrn = document.getElementById("cover-scrn");
 
-viewBtns.forEach(function (btn) {
-    let product = btn.parentElement;
-    let xbtn = product.parentElement.querySelector(".x-btn");
-
-    btn.addEventListener("click", function () {
-        product.classList.toggle("active");
-        coverScrn.classList.toggle("active");
-        xbtn.classList.toggle("active");
-        btn.innerText = btn.innerText.includes("View") ? "Add to cart" : "View Item";
-
-        if (btn.innerText.includes("Add")) {
-            toggleCart();
-        }
-
-    });
-
-    xbtn.addEventListener("click", function () {
-        closeProduct(product, coverScrn, xbtn, btn);
-    });
-
-    coverScrn.addEventListener("click", function () {
-        closeProduct(product, coverScrn, xbtn, btn);
-    });
-
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
+    viewBtns.forEach(function (btn) {
+        let product = btn.parentElement;
+        let xbtn = product.parentElement.querySelector(".x-btn");
+        
+        btn.addEventListener("click", function () {
+            if (btn.innerText.includes("Add")) {
+                addCartItem(); // Adds item to cart     
+            }
+            product.classList.toggle("active");
+            coverScrn.classList.toggle("active");
+            xbtn.classList.toggle("active");
+            btn.innerText = btn.innerText.includes("View") ? "Add to cart" : "View Item";
+    
+    
+        });
+    
+        xbtn.addEventListener("click", function () {
             closeProduct(product, coverScrn, xbtn, btn);
-        }
+        });
+    
+        coverScrn.addEventListener("click", function () {
+            closeProduct(product, coverScrn, xbtn, btn);
+        });
+    
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                closeProduct(product, coverScrn, xbtn, btn);
+            }
+        });
+    
+        window.addEventListener("scroll", function () {
+            closeProduct(product, coverScrn, xbtn, btn);
+        });
     });
-
-    window.addEventListener("scroll", function () {
-        closeProduct(product, coverScrn, xbtn, btn);
-    });
-});
+}
 
 function closeProduct(product, coverScrn, xbtn, btn) {
     product.classList.remove("active");
@@ -44,6 +47,22 @@ function closeProduct(product, coverScrn, xbtn, btn) {
     xbtn.classList.remove("active");
     btn.innerText = "View Item";
 }
+
+function addCartItem() {
+    let cart = document.getElementById("cart");
+    let cartItems = document.querySelector(".cart .items");
+    let val = cart.getAttribute("data-items");
+    val++;
+    cart.style.display = "inline-block";
+    cart.style.pointerEvents = "all";
+    cartItems.style.display = "block";
+    cartItems.innerText = val;
+    cart.setAttribute("data-items", val);
+
+
+}
+
+
 
 
 // Mobile Filters Btn
@@ -86,7 +105,7 @@ slider.oninput = function () {
 };
 
 slider.addEventListener("mouseup", function () {
-        urlQueryString("max-price", this.value);
+    urlQueryString("max-price", this.value);
 });
 
 slider.addEventListener("touchend", function () {
@@ -133,7 +152,7 @@ checkboxes.forEach(function (checkbox) {
     checkbox.addEventListener("change", function () {
         if (checkbox.checked) {
             let cbQueryName = checkbox.getAttribute("data-queryName");
-            urlQueryString("searchFor" , cbQueryName);
+            urlQueryString("searchFor", cbQueryName);
         }
     });
 });
@@ -152,28 +171,28 @@ if (window.location.search.includes("searchFor")) {
 
 function returnItemsCount() {
     let products = document.getElementById("products");
-    console.log(products.offsetWidth);
 
-    if ( window.innerWidth <= 800 && window.innerHeight <= 600 ) {
+    if (window.innerWidth <= 800 && window.innerHeight <= 600) {
         return 6;
     }
 
-    if ( products.offsetWidth <= 720) {
+    if (products.offsetWidth <= 720) {
         return 8;
     }
 
-    if ( products.offsetWidth <= 1080) {
+    if (products.offsetWidth <= 1080) {
         return 10;
     }
     return 12;
 }
-function debounce(func){
+
+function debounce(func) {
     var timer;
-    return function(event){
-      if(timer) clearTimeout(timer);
-      timer = setTimeout(func,100,event);
+    return function (event) {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(func, 100, event);
     };
-  }
+}
 
 
 let url = new URL(window.location.href);
@@ -183,11 +202,61 @@ let itemsPerPage = returnItemsCount();
 window.addEventListener("resize", debounce(function () {
     itemsPerPage = returnItemsCount();
 }));
-
-console.log(itemsPerPage);
-    // Update URL
+// Update URL
 
 
-        // Start & End Pages
+// Start & End Pages
 
-        
+
+
+// On page load
+
+
+let currentURL = new URL("http://localhost:8000/");
+let productsData;
+
+// Function to fetch data and update products
+async function fetchAndLoadProducts() {
+    try {
+        productsData = await fetchData(currentURL + "/products");
+        updateProducts(productsData);
+    } catch (error) {
+        console.error('Error fetching and updating products:', error);
+    }
+}
+
+window.addEventListener("load", fetchAndLoadProducts);
+
+function updateProducts(data) {
+    clearProducts();
+    let products = document.getElementById("products");
+    let start = (currentPage - 1) * itemsPerPage;
+    let end = start + itemsPerPage;
+    let productsArray = data.slice(start, end);
+
+    productsArray.forEach(function (product) {
+        let productDiv = document.createElement("div");
+        productDiv.classList.add("p-viewer");
+        productDiv.innerHTML = `
+            <div class="card">
+                <div class="x-btn xpv"><span></span><span></span></div>
+                <div class="card-scroll">
+                    <img src="/static/Images/product.png" alt="Image of product" />
+                    <h5>${product.name}</h5>
+                    <p class="price-lbl">$<span id="price">${product.price}</span></p>
+                    <p class="p-desc">
+                    ${product.description}
+                    </p>
+                </div>
+                <button class="product-btn" id="product1">View Item</button>
+            </div>
+            `;
+        products.appendChild(productDiv);
+    });
+    loadEvents();
+}
+
+function clearProducts() {
+    let products = document.getElementById("products");
+    products.innerHTML = "";
+}
