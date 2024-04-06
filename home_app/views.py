@@ -3,6 +3,8 @@ from django.shortcuts import redirect
 from django.core.exceptions import PermissionDenied
 import os
 from django.http import HttpResponse, Http404, JsonResponse
+
+from alchemyanalytics import settings
 from home_app import models
 
 def index(request):
@@ -33,11 +35,12 @@ def products(request):
         newest_entries = queryset[offset:offset + page_size]
         result = []
         for entry in newest_entries:
+            image_url = request.build_absolute_uri(entry.image.name)
             result.append({
                 'name': entry.name,
                 'price': entry.price,
                 'description': entry.description,
-                #'image_url': entry.image,
+                'image_url': image_url,
                 'item_or_product': entry.item_or_product,
                 'indicator_or_strategy': entry.indicator_or_strategy
             })
