@@ -23,5 +23,6 @@ urlpatterns = [
     path('shop', views.shop, name='shop'),
     path('checkout', views.checkout, name="checkout"),
     path('account', views.account, name="account"),
-    path('download/<str:file_name>/', views.download_file, name='download_file')
+    path('download/<str:file_name>/', views.download_file, name='download_file'),
+    path('products', views.products, name="products")
 ]

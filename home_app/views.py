@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.core.exceptions import PermissionDenied
 import os
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 from home_app import models
 
 def index(request):
@@ -10,6 +10,24 @@ def index(request):
 
 def shop(request):
     return render(request, 'HTML/Pages/shop.html', {})
+
+def products(request):
+    if request.GET:
+        page = request.GET.get('page', '')
+        price_low = request.GET.get('price_low', 0)
+        price_high = request.GET.get('price_high', float('inf'))
+        result = {
+            'query': page,
+            'price_low': price_low,
+            'price_high': price_high,
+            'results': ['result1', 'result2', 'result3']
+        }
+        return JsonResponse(result)
+    else:
+        result = {
+            'empty': 'lol its empty'
+        }
+        return JsonResponse(result)
 
 def checkout(request):
     return render(request, 'HTML/Pages/checkout.html', {})
