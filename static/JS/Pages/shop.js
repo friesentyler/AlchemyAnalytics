@@ -120,7 +120,7 @@ slider.addEventListener("touchend", function () {
 // Sort By
 
 let sorter = document.getElementById("sortby");
-let sortOptions = ["Price: Low", "Price: High", "Newest", "Oldest"];
+let sortOptions = ["Oldest", "Price: Low", "Price: High", "Newest"];
 let currentSort;
 
 if (window.location.search.includes("sort")) {
@@ -212,13 +212,14 @@ window.addEventListener("resize", debounce(function () {
 // On page load
 
 
-let currentURL = new URL("http://localhost:8000/");
+let currentURL = new URL("http://localhost:8000");
 let productsData;
 
 // Function to fetch data and update products
 async function fetchAndLoadProducts() {
     try {
         productsData = await fetchData(currentURL + "/products");
+        console.log(productsData);
         updateProducts(productsData);
     } catch (error) {
         console.error('Error fetching and updating products:', error);
@@ -241,7 +242,7 @@ function updateProducts(data) {
             <div class="card">
                 <div class="x-btn xpv"><span></span><span></span></div>
                 <div class="card-scroll">
-                    <img src="/static/Images/product.png" alt="Image of product" />
+                    <img src="${product.image_url}" alt="Image of product" />
                     <h5>${product.name}</h5>
                     <p class="price-lbl">$<span id="price">${product.price}</span></p>
                     <p class="p-desc">
