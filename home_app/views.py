@@ -51,7 +51,7 @@ def products(request):
             queryset = models.Product.objects.order_by('-price')
         else:
             queryset = models.Product.objects.order_by('-date_created')
-
+        queryset_len = len(queryset)
         entries = queryset
         if max_price:
             entries = entries.filter(price__gte=1, price__lte=max_price)
@@ -70,12 +70,14 @@ def products(request):
                 'description': entry.description,
                 'image_url': image_url,
                 'item_or_package': entry.item_or_package,
-                'indicator_or_strategy': entry.indicator_or_strategy
+                'indicator_or_strategy': entry.indicator_or_strategy,
+                'total_number_of_products': queryset_len
             })
         return JsonResponse(result, safe=False)
     else:
         offset = (page - 1) * page_size
         queryset = models.Product.objects.order_by('date_created')
+        queryset_len = len(queryset)
         newest_entries = queryset[offset:offset + page_size]
         result = []
         for entry in newest_entries:
@@ -86,7 +88,8 @@ def products(request):
                 'description': entry.description,
                 'image_url': image_url,
                 'item_or_package': entry.item_or_package,
-                'indicator_or_strategy': entry.indicator_or_strategy
+                'indicator_or_strategy': entry.indicator_or_strategy,
+                'total_number_of_products': queryset_len
             })
         return JsonResponse(result, safe=False)
 
