@@ -13,6 +13,20 @@ def index(request):
 def shop(request):
     return render(request, 'HTML/Pages/shop.html', {})
 
+def user_products(request):
+    if not request.user.is_authenticated:
+        raise PermissionDenied()
+    owned_products = models.UserProduct.objects.filter(user=request.user)
+    result = []
+    for owned_product in owned_products:
+        result.append({
+            'name': owned_product.product.name,
+            'description': owned_product.product.description,
+            "download_url": os.path.join(request.get_host(), 'download', os.path.basename(str(owned_product.product.file))),
+            'image_url': request.build_absolute_uri(owned_product.product.image.name),
+        })
+    return JsonResponse(result, safe=False)
+
 def products(request):
     # should be an integer
     page = int(request.GET.get('page', 1))
