@@ -15,9 +15,9 @@ def shop(request):
 
 def products(request):
     # should be an integer
-    page = request.GET.get('page', 1)
+    page = int(request.GET.get('page', 1))
+    page_size = int(request.GET.get('page_size', 2))
     if request.GET:
-        page_size = 5
         offset = (page - 1) * page_size
         # should be a number float or int
         max_price = request.GET.get('max_price', '')
@@ -60,7 +60,6 @@ def products(request):
             })
         return JsonResponse(result, safe=False)
     else:
-        page_size = 5
         offset = (page - 1) * page_size
         queryset = models.Product.objects.order_by('date_created')
         newest_entries = queryset[offset:offset + page_size]
