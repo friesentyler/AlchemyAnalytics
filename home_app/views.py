@@ -14,20 +14,51 @@ def shop(request):
     return render(request, 'HTML/Pages/shop.html', {})
 
 def products(request):
-    #image_url = request.build_absolute_uri(settings.STATIC_URL + 'images/my_image.png')
+    # should be an integer
     page = request.GET.get('page', 1)
     if request.GET:
-        price_low = request.GET.get('price_low', 0)
-        price_high = request.GET.get('price_high', float('inf'))
-        result = [{
-            'name': page,
-            'price': price_low,
-            'description': price_high,
-            'image_url': ['result1', 'result2', 'result3'],
-            'item_or_product': "ueet",
-            'indicator_or_strategy': 'euesh'
-        }]
-        return JsonResponse(result)
+        page_size = 5
+        offset = (page - 1) * page_size
+        # should be a number float or int
+        max_price = request.GET.get('max_price', '')
+        # should be a string: item, package
+        item_or_package = request.GET.get('item_or_package', '')
+        # should be a string: indicator, strategy
+        indicator_or_strategy = request.GET.get('indicator_or_strategy', '')
+        # should be a string: newest, oldest, lowest, highest
+        sort_by = request.GET.get('sort_by', 'newest')
+        if sort_by == 'newest':
+            queryset = models.Product.objects.order_by('-date_created')
+        elif sort_by == 'oldest':
+            queryset = models.Product.objects.order_by('date_created')
+        elif sort_by == 'low':
+            queryset = models.Product.objects.order_by('price')
+        elif sort_by == 'high':
+            queryset = models.Product.objects.order_by('-price')
+        else:
+            queryset = models.Product.objects.order_by('-date_created')
+
+        entries = queryset
+        if max_price:
+            entries = entries.filter(price__gte=1, price__lte=max_price)
+        if item_or_package:
+            entries = entries.filter(item_or_package=item_or_package)
+        if indicator_or_strategy:
+            entries = entries.filter(indicator_or_strategy=indicator_or_strategy)
+
+        entries = entries[offset:offset + page_size]
+        result = []
+        for entry in entries:
+            image_url = request.build_absolute_uri(entry.image.name)
+            result.append({
+                'name': entry.name,
+                'price': entry.price,
+                'description': entry.description,
+                'image_url': image_url,
+                'item_or_package': entry.item_or_package,
+                'indicator_or_strategy': entry.indicator_or_strategy
+            })
+        return JsonResponse(result, safe=False)
     else:
         page_size = 5
         offset = (page - 1) * page_size
@@ -41,7 +72,7 @@ def products(request):
                 'price': entry.price,
                 'description': entry.description,
                 'image_url': image_url,
-                'item_or_product': entry.item_or_product,
+                'item_or_package': entry.item_or_package,
                 'indicator_or_strategy': entry.indicator_or_strategy
             })
         return JsonResponse(result, safe=False)
