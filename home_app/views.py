@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.core.exceptions import PermissionDenied
 import os
 from django.http import HttpResponse, Http404, JsonResponse
-
+from django.views.decorators.csrf import csrf_exempt
 from alchemyanalytics import settings
 from home_app import models
 
@@ -95,6 +95,23 @@ def products(request):
 
 def checkout(request):
     return render(request, 'HTML/Pages/checkout.html', {})
+
+# ideally this should not be csrf_exempt
+@csrf_exempt
+def purchase(request):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            import json
+
+            post_data = json.loads(request.body.decode("utf-8"))
+
+            print(post_data)
+        else:
+            return HttpResponse('User is not authenticated', status=403)
+    else:
+        return HttpResponse('Only POST requests are allowed for this endpoint', status=405)
+
+    return HttpResponse("HELLO")
 
 def account(request):
     if request.user.is_authenticated:
