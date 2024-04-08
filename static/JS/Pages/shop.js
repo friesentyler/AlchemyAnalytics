@@ -1,4 +1,3 @@
-
 // Product Viewer
 
 function loadEvents() {
@@ -8,7 +7,7 @@ function loadEvents() {
     viewBtns.forEach(function (btn) {
         let product = btn.parentElement;
         let xbtn = product.parentElement.querySelector(".x-btn");
-        
+
         btn.addEventListener("click", function () {
             if (btn.innerText.includes("Add")) {
                 addCartItem(); // Adds item to cart     
@@ -17,24 +16,24 @@ function loadEvents() {
             coverScrn.classList.toggle("active");
             xbtn.classList.toggle("active");
             btn.innerText = btn.innerText.includes("View") ? "Add to cart" : "View Item";
-    
-    
+
+
         });
-    
+
         xbtn.addEventListener("click", function () {
             closeProduct(product, coverScrn, xbtn, btn);
         });
-    
+
         coverScrn.addEventListener("click", function () {
             closeProduct(product, coverScrn, xbtn, btn);
         });
-    
+
         document.addEventListener("keydown", function (e) {
             if (e.key === "Escape") {
                 closeProduct(product, coverScrn, xbtn, btn);
             }
         });
-    
+
         window.addEventListener("scroll", function () {
             closeProduct(product, coverScrn, xbtn, btn);
         });
@@ -82,6 +81,11 @@ function urlQueryString(param, value) {
     window.location.href = url;
 }
 
+function urlQueryStringUrl(param, value, url) {
+    url.searchParams.set(param, value);
+    window.location.href = url;
+}
+
 //----------------
 // Filter Products
 //----------------
@@ -93,9 +97,9 @@ var val = document.getElementById("price-value");
 
 val.innerHTML = slider.value;
 
-if (window.location.search.includes("max-price")) {
+if (window.location.search.includes("max_price")) {
     let url = new URL(window.location.href);
-    let maxPrice = url.searchParams.get("max-price");
+    let maxPrice = url.searchParams.get("max_price");
     slider.value = maxPrice;
     val.innerHTML = maxPrice;
 }
@@ -105,11 +109,11 @@ slider.oninput = function () {
 };
 
 slider.addEventListener("mouseup", function () {
-    urlQueryString("max-price", this.value);
+    urlQueryString("max_price", this.value);
 });
 
 slider.addEventListener("touchend", function () {
-    urlQueryString("max-price", this.value);
+    urlQueryString("max_price", this.value);
 });
 
 // If slider is being dragged
@@ -121,14 +125,25 @@ slider.addEventListener("touchend", function () {
 
 let sorter = document.getElementById("sortby");
 let sortOptions = ["Oldest", "Price: Low", "Price: High", "Newest"];
+let sortValues = ["oldest", "low", "high", "newest"];
 let currentSort;
 
 if (window.location.search.includes("sort")) {
     let url = new URL(window.location.href);
-    let sort = url.searchParams.get("sort");
-    sorter.value = sort;
-    currentSort = sort;
-    sorter.innerHTML = sortOptions[sort];
+    let sort = url.searchParams.get("sort_by");
+
+    if (sort === "oldest") {
+        currentSort = 0;
+    } else if (sort === "low") {
+        currentSort = 1;
+    } else if (sort === "high") {
+        currentSort = 2;
+    } else if (sort === "newest") {
+        currentSort = 3;
+    }
+
+    sorter.value = currentSort;
+    sorter.innerHTML = sortOptions[currentSort];
 }
 
 sorter.addEventListener("click", function () {
@@ -140,27 +155,72 @@ sorter.addEventListener("click", function () {
     sorter.innerHTML = sortOptions[currentSort];
     sorter.value = currentSort;
 
-    urlQueryString("sort", currentSort);
+    urlQueryString("sort_by", sortValues[currentSort]);
 });
 
 // Checkboxes Inputs
+let cbInputs = document.querySelectorAll("#filter input[type='checkbox']");
+let cbPack = document.querySelectorAll("#filter input[type='checkbox'].pack");
+let cbItem = document.querySelectorAll("#filter input[type='checkbox'].item");
 
-let checkboxes = document.querySelectorAll("#filter input[type='checkbox']");
+clearCheckboxes();
+function clearCheckboxes(except) {
+    cbInputs.forEach(function (checkbox) {
+        if (checkbox !== except)
+        checkbox.checked = false;
+    });
+}
 
-
-checkboxes.forEach(function (checkbox) {
+// Packs or Items
+cbPack.forEach(function (checkbox) {
     checkbox.addEventListener("change", function () {
+        let url = new URL(window.location.href);
+        if (window.location.search.includes("indicator_or_strategy")) {
+            url.searchParams.delete("indicator_or_strategy");
+        }
         if (checkbox.checked) {
             let cbQueryName = checkbox.getAttribute("data-queryName");
-            urlQueryString("searchFor", cbQueryName);
+            urlQueryStringUrl("item_or_package", cbQueryName, url);
+        } else {
+            url.searchParams.delete("item_or_package");
+            window.location.href = url;
         }
+        clearCheckboxes(checkbox);
     });
 });
 
-if (window.location.search.includes("searchFor")) {
+if (window.location.search.includes("item_or_package")) {
     let url = new URL(window.location.href);
-    let searchFor = url.searchParams.get("searchFor");
-    let checkbox = document.querySelector(`input[data-queryName="${searchFor}"]`);
+    let searchFor = url.searchParams.get("item_or_package");
+    let checkbox = document.querySelector(`input[data-queryName="${searchFor}"].pack`);
+    checkbox.checked = true;
+}
+
+
+// Indicator or Strategy
+cbItem.forEach(function (checkbox) {
+    checkbox.addEventListener("change", function () {
+        let url = new URL(window.location.href);
+        if (window.location.search.includes("item_or_package")) {
+            url.searchParams.delete("item_or_package");
+        }
+        if (checkbox.checked) {
+            let cbQueryName = checkbox.getAttribute("data-queryName");
+            urlQueryStringUrl("indicator_or_strategy", cbQueryName, url);
+        } else {
+            url.searchParams.delete("indicator_or_strategy");
+            window.location.href = url;
+        }
+
+        clearCheckboxes();
+        checkbox.checked = true;
+    });
+});
+
+if (window.location.search.includes("indicator_or_strategy")) {
+    let url = new URL(window.location.href);
+    let searchFor = url.searchParams.get("indicator_or_strategy");
+    let checkbox = document.querySelector(`input[data-queryName="${searchFor}"].item`);
     checkbox.checked = true;
 }
 
@@ -168,6 +228,109 @@ if (window.location.search.includes("searchFor")) {
 //-----------
 // Pagination
 //-----------
+
+var itemCount;
+let paginationBtns = document.querySelectorAll(".circle");
+let itemsPerPage = window.location.search.includes("page_size") ? parseInt(new URL(window.location.href).searchParams.get("page_size")) : returnItemsCount();
+let totalPages = 0;
+
+if (!window.location.search.includes("page_size")) {
+    urlQueryString("page_size", returnItemsCount());
+}
+
+
+
+window.addEventListener("load", function () {
+    setPagination(parseInt(currentPage));
+    paginationBtns.forEach(function (btn) {
+        if (btn.innerText === currentPage) {
+            btn.classList.add("active");
+        }
+    });
+});
+
+
+function loadPagination() {
+    if (totalPages < 5) {
+        switch (totalPages) {
+            case 1: 
+                paginationBtns[2].style.display = "none";
+                paginationBtns[3].style.display = "none";
+                paginationBtns[4].style.display = "none";
+                paginationBtns[5].style.display = "none";
+                break;
+            case 2:
+                paginationBtns[3].style.display = "none";
+                paginationBtns[4].style.display = "none";
+                paginationBtns[5].style.display = "none";
+                break;
+            case 3:
+                paginationBtns[4].style.display = "none";
+                paginationBtns[5].style.display = "none";
+                break;
+            case 4:
+                paginationBtns[5].style.display = "none";
+                break;
+        }
+    }
+    paginationBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            if (btn.classList.contains("start")) {
+                let url = new URL(window.location.href);
+                url.searchParams.set("page", 1);
+                window.location.href = url;
+                return;
+            } else if (btn.classList.contains("end")) {
+                let url = new URL(window.location.href);
+                url.searchParams.set("page", totalPages);
+                window.location.href = url;
+                return;
+            } else {
+                let url = new URL(window.location.href);
+                url.searchParams.set("page", btn.innerText);
+                window.location.href = url;
+            }
+            setPagination(parseInt(btn.innerText));
+        });
+    });
+}
+
+
+function setPagination(page) {
+    if (page > 3) {
+        let incrementor = page - 3;
+        paginationBtns.forEach(function (btn) {
+            btn.classList.remove("active");
+            if (!btn.classList.contains("start") && !btn.classList.contains("end")) {
+                incrementor++;
+                btn.innerText = incrementor;
+            }
+        });
+        paginationBtns[3].classList.add("active");
+    } else {
+        let incrementor = 0;
+        paginationBtns.forEach(function (btn) {
+            btn.classList.remove("active");
+            if (!btn.classList.contains("start") && !btn.classList.contains("end")) {
+                incrementor++;
+                btn.innerText = incrementor;
+            }
+        });
+
+        if (page === 1) {
+            paginationBtns[1].classList.add("active");
+        } else if (page === 2) {
+            paginationBtns[2].classList.add("active");
+        } else if (page === 3) {
+            paginationBtns[3].classList.add("active");
+        }
+    }
+}
+
+
+
+
+//Resize Events
 
 function returnItemsCount() {
     let products = document.getElementById("products");
@@ -197,19 +360,8 @@ function debounce(func) {
 
 let url = new URL(window.location.href);
 const currentPage = url.searchParams.get("page") || 1;
-let itemsPerPage = returnItemsCount();
-
-window.addEventListener("resize", debounce(function () {
-    itemsPerPage = returnItemsCount();
-}));
-// Update URL
 
 
-// Start & End Pages
-
-
-
-// On page load
 
 
 let currentURL = new URL("http://localhost:8000");
@@ -218,8 +370,7 @@ let productsData;
 // Function to fetch data and update products
 async function fetchAndLoadProducts() {
     try {
-        productsData = await fetchData(currentURL + "/products");
-        console.log(productsData);
+        productsData = await fetchData(currentURL + "products" + getQueryStrings());
         updateProducts(productsData);
     } catch (error) {
         console.error('Error fetching and updating products:', error);
@@ -228,21 +379,19 @@ async function fetchAndLoadProducts() {
 
 window.addEventListener("load", fetchAndLoadProducts);
 
+
 function updateProducts(data) {
     clearProducts();
     let products = document.getElementById("products");
-    let start = (currentPage - 1) * itemsPerPage;
-    let end = start + itemsPerPage;
-    let productsArray = data.slice(start, end);
 
-    productsArray.forEach(function (product) {
+    data.forEach(function (product) {
         let productDiv = document.createElement("div");
         productDiv.classList.add("p-viewer");
         productDiv.innerHTML = `
             <div class="card">
                 <div class="x-btn xpv"><span></span><span></span></div>
                 <div class="card-scroll">
-                    <img src="${product.image_url}" alt="Image of product" />
+                    <img src="${product.image_url}" alt="Image of product" draggable="false" />
                     <h5>${product.name}</h5>
                     <p class="price-lbl">$<span id="price">${product.price}</span></p>
                     <p class="p-desc">
@@ -253,11 +402,23 @@ function updateProducts(data) {
             </div>
             `;
         products.appendChild(productDiv);
+        itemCount = product.total_number_of_products;
+        totalPages = Math.ceil(itemCount / itemsPerPage)
     });
     loadEvents();
+    loadPagination();
 }
 
 function clearProducts() {
     let products = document.getElementById("products");
     products.innerHTML = "";
+}
+
+
+// Grab Query Strings
+
+function getQueryStrings() {
+    let url = new URL(window.location.href);
+    let searchParams = "?" + url.searchParams;
+    return searchParams;
 }

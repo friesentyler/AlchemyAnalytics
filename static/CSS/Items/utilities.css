@@ -50,6 +50,7 @@
 
 .card button {
   width: 100%;
+  height: 44px;
   font-size: 2rem;
   font-weight: 700;
   padding: 1rem;
@@ -145,5 +146,60 @@
   .x-btn {
     top: 10px;
     left: 95%;
+  }
+}
+
+
+
+
+
+
+
+
+/* ---------- */
+/* Pre-Loader */
+/* ---------- */
+
+.pre-load .pre-img {
+  width: 297px;
+  height: 170px;
+  background: var(--color-preloader);
+  background-size: 1600px 1600px;
+  animation: preLoadShimmer 1s infinite linear;
+}
+
+.pre-load .pre-header {
+  margin: 7px 0 0 0;
+  width: 250px;
+  height: 30px;
+  background: var(--color-preloader);
+  background-size: 1600px 1600px;
+  animation: preLoadShimmer 1s infinite linear;
+}
+
+.pre-load .pre-price {
+  margin: 10px 0 0 0;
+  width: 65px;
+  height: 20px;
+  background: var(--color-preloader);
+  background-size: 1600px 1600px;
+  animation: preLoadShimmer 1s infinite linear;
+}
+
+.pre-load .pre-btn {
+  width: 100%;
+  height: 44px;
+  background: var(--color-preloader);
+  background-size: 1600px 1600px;
+  animation: preLoadShimmer 1s infinite linear;
+}
+
+
+@keyframes preLoadShimmer {
+  0% {
+    background-position: -800px -800px
+  }
+  100% {
+    background-position: 800px 800px
   }
 }

@@ -93,6 +93,7 @@
   color: var(--color-main);
   font-weight: 900;
   text-shadow: 1px 1px 1px var(--font-color);
+  margin: 7px 0 0 0;
 }
 
 #cover-scrn {
@@ -123,6 +124,11 @@
   margin: 0 0 0 0;
   transition-duration: 0s;
   width: 90%;
+  height: 315px;
+}
+
+.products .card-scroll {
+  height: 270px;
 }
 
 .products .card.active {
@@ -163,6 +169,7 @@
 
 .products .card button {
   transition-duration: 0s;
+  
 }
 
 .products .card.active button {
@@ -234,3 +241,5 @@
 
 
 }
+
+
