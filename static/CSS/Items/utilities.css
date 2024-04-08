@@ -194,6 +194,19 @@
   animation: preLoadShimmer 1s infinite linear;
 }
 
+.pre-load .pre-desc span {
+  display: block;
+  margin: 6px 0 0 0;
+  width: 100%;
+  height: 20px;
+  background: var(--color-preloader);
+  background-size: 1600px 1600px;
+  animation: preLoadShimmer 1s infinite linear;
+}
+.pre-load .pre-desc span:nth-child(3) {
+  margin-bottom: 35px;
+}
+
 
 @keyframes preLoadShimmer {
   0% {

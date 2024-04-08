@@ -364,7 +364,7 @@ const currentPage = url.searchParams.get("page") || 1;
 
 
 
-let currentURL = new URL("http://localhost:8000");
+let currentURL = new URL("http://127.0.0.1:8000/");
 let productsData;
 
 // Function to fetch data and update products

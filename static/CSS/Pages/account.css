@@ -2,3 +2,23 @@
 .card button {
     margin: 2rem 0 0 0;
 }
+
+.products .card-scroll {
+    height: 211px;
+}
+
+.products .card {
+    height: 280px;
+}
+
+.products .card-container {
+    margin-bottom: 30px;
+}
+
+.pre-load .pre-header {
+    margin: 12px 0 0 0 ;
+}
+
+.pre-load .pre-btn {
+    margin: 20px 0 0 0 ;
+}

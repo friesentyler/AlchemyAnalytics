@@ -16,11 +16,11 @@ deleteBtns.forEach(function (btn) {
 
 // Check if cart is empty
 
-let cart = document.querySelector(".cart-items");
+let mcart = document.querySelector(".cart-items");
 
 function isEmpty() {
-    if (cart.children.length === 0) {
-        cart.innerHTML = "<h6>Your cart is empty</h6>";
+    if (mcart.children.length === 0) {
+        mcart.innerHTML = "<h6>Your cart is empty</h6>";
     }
 }
 
