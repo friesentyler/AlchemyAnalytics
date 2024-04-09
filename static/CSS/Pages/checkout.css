@@ -4,6 +4,7 @@
 /* ------------- */
 
 .checkout-container {
+  display: flex;
   margin: 75px 0 0 0;
 }
 
@@ -17,7 +18,7 @@
   display: flex;
   flex-direction: column;
   width: 65%;
-  margin: 8.5rem 5rem 20px 2rem;
+  margin: 0rem 2rem 20px 2rem;
   padding: 20px;
   border: 3px solid var(--color-secondary);
   border-radius: 5px;
@@ -170,6 +171,32 @@
 }
 
 
+.payment-btns .google {
+  border: 5px solid var(--color-main);
+}
+
+.payment-btns .google:hover {
+  background: var(--color-ml);
+  transition-duration: 0.2s;
+}
+
+/* Side Assurances */
+
+.checkout-side {
+  margin: 0 2rem 2rem 0;
+}
+.checkout-side h5 {
+  margin: 0 0 2rem 0;
+}
+
+.checkout-side div {
+  margin: 0 0 0 2rem;
+}
+
+.checkout-side div p {
+  margin: 0 0 1rem 3rem;
+}
+
 
 
 
@@ -180,6 +207,17 @@
 
 
 @media (max-width: 750px) {
+  .checkout-container {
+    flex-direction: column;
+    margin: 0 0 5rem 0;
+  }
+
+  .checkout-side {
+    margin: 0 auto;
+    width: calc(80% + 4rem);
+  }
+
+  
   .checkout-content {
     width: 80%;
     margin: 8.5rem auto 2rem auto;
