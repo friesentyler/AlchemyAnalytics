@@ -122,6 +122,11 @@ main {
   display: inline;
 }
 
+.card p {
+  max-height: 50px;
+  overflow: hidden;
+}
+
 .card:nth-child(1) {
   z-index: 3;
   position: relative;
