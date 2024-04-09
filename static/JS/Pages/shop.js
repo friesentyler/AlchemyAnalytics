@@ -1,3 +1,5 @@
+
+
 // Product Viewer
 
 function loadEvents() {
@@ -47,19 +49,21 @@ function closeProduct(product, coverScrn, xbtn, btn) {
     btn.innerText = "View Item";
 }
 
+
+// Adds item to cart
 function addCartItem() {
     let cart = document.getElementById("cart");
     let cartItems = document.querySelector(".cart .items");
-    let val = cart.getAttribute("data-items");
-    val++;
+
     cart.style.display = "inline-block";
     cart.style.pointerEvents = "all";
     cartItems.style.display = "block";
-    cartItems.innerText = val;
-    cart.setAttribute("data-items", val);
 
-
+    addToCart();
+    checkCart();
 }
+
+
 
 
 
@@ -73,18 +77,6 @@ filterBtn.addEventListener("click", function () {
     filter.classList.toggle("active");
 });
 
-// Set URL Query String
-
-function urlQueryString(param, value) {
-    let url = new URL(window.location.href);
-    url.searchParams.set(param, value);
-    window.location.href = url;
-}
-
-function urlQueryStringUrl(param, value, url) {
-    url.searchParams.set(param, value);
-    window.location.href = url;
-}
 
 //----------------
 // Filter Products
@@ -110,10 +102,12 @@ slider.oninput = function () {
 
 slider.addEventListener("mouseup", function () {
     urlQueryString("max_price", this.value);
+    fetchAndLoadProducts();
 });
 
 slider.addEventListener("touchend", function () {
     urlQueryString("max_price", this.value);
+    fetchAndLoadProducts();
 });
 
 // If slider is being dragged
@@ -156,6 +150,7 @@ sorter.addEventListener("click", function () {
     sorter.value = currentSort;
 
     urlQueryString("sort_by", sortValues[currentSort]);
+    fetchAndLoadProducts();
 });
 
 // Checkboxes Inputs
@@ -181,6 +176,7 @@ cbPack.forEach(function (checkbox) {
         if (checkbox.checked) {
             let cbQueryName = checkbox.getAttribute("data-queryName");
             urlQueryStringUrl("item_or_package", cbQueryName, url);
+            fetchAndLoadProducts();
         } else {
             url.searchParams.delete("item_or_package");
             window.location.href = url;
@@ -207,6 +203,7 @@ cbItem.forEach(function (checkbox) {
         if (checkbox.checked) {
             let cbQueryName = checkbox.getAttribute("data-queryName");
             urlQueryStringUrl("indicator_or_strategy", cbQueryName, url);
+            fetchAndLoadProducts();
         } else {
             url.searchParams.delete("indicator_or_strategy");
             window.location.href = url;
@@ -361,10 +358,12 @@ function debounce(func) {
 let url = new URL(window.location.href);
 const currentPage = url.searchParams.get("page") || 1;
 
+//---------------
+// Fetch Products
+//---------------
 
 
-
-let currentURL = new URL("http://127.0.0.1:8000/");
+let currentURL = new URL(domain);
 let productsData;
 
 // Function to fetch data and update products
@@ -374,6 +373,7 @@ async function fetchAndLoadProducts() {
         updateProducts(productsData);
     } catch (error) {
         console.error('Error fetching and updating products:', error);
+        alertMessage("Product Error", "Try reloading the page");
     }
 }
 
@@ -415,10 +415,15 @@ function clearProducts() {
 }
 
 
-// Grab Query Strings
 
-function getQueryStrings() {
-    let url = new URL(window.location.href);
-    let searchParams = "?" + url.searchParams;
-    return searchParams;
-}
+
+
+
+
+
+
+
+
+
+
+

@@ -27,7 +27,7 @@
     <!--*----------------------------->
     <!--* SCRIPTS & OTHER LIBRARIES -->
     <!--*----------------------------->
-
+    <script src="{% static 'JS/utils.js' %}" defer></script>
     <script src="{% static 'JS/Pages/checkout.js' %}" defer></script>
     <!-- Scroll Animations -->
     <link rel="stylesheet" type="text/css"
@@ -63,26 +63,7 @@
             </div>
 
             <!-- This is where all cart items will be displayed. -->
-            <div class="cart-items">
-                <div class="c-item">
-                    <div class="x-btn"><span></span><span></span></div>
-                    <img src="{% static 'Images/product.png' %}" alt="Item Image" />
-                    <h4 class="ci-name">Aggression</h4>
-                    <h6 class="ci-price">$5</h6>
-                </div>
-                <div class="c-item">
-                    <div class="x-btn"><span></span><span></span></div>
-                    <img src="{% static 'Images/product.png' %}" alt="Item Image" />
-                    <h4 class="ci-name">Aggression</h4>
-                    <h6 class="ci-price">$5</h6>
-                </div>
-                <div class="c-item">
-                    <div class="x-btn"><span></span><span></span></div>
-                    <img src="{% static 'Images/product.png' %}" alt="Item Image" />
-                    <h4 class="ci-name">Aggression</h4>
-                    <h6 class="ci-price">$5</h6>
-                </div>
-            </div>
+            <div class="cart-items"></div>
             <div class="checkout-footer">
                 <div class="cf-total">
                     <!-- Target the checkout-total ID to display total checkout price -->

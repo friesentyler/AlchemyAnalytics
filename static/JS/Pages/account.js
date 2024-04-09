@@ -52,7 +52,7 @@ function closeProduct(product, coverScrn, xbtn, btn) {
 
 
 
-let currentURL = new URL("http://127.0.0.1:8000/");
+let currentURL = new URL(domain);
 let productsData;
 
 // Function to fetch data and update products
@@ -94,7 +94,7 @@ function updateProducts(data) {
         products.innerHTML = `
         <h6 style="width: 100%;">You don't have any products to download!</h6>
         <br>
-        <button style="margin-right: auto; color: #342C40;" class="modern-btn">Visit Shop</button>
+        <a style="margin-right: auto;" href="/shop"><button style="color: #342C40;" class="modern-btn">Visit Shop</button></a>
         `;
     }
     loadEvents();

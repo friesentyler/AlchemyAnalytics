@@ -22,7 +22,7 @@ cards.forEach(card => {
 // Display items on home page
 
 let products = document.querySelectorAll(".card");
-let currentURL = new URL("http://127.0.0.1:8000/");
+let currentURL = new URL(domain);
 let productsData;
 
 // Function to fetch data and update products
