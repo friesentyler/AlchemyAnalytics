@@ -18,7 +18,6 @@ async function fetchData(url) {
 
 async function postData(url, data) {
     try {
-
         const response = await fetch(url, {
             method: "POST",
             headers: {

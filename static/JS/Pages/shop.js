@@ -170,15 +170,14 @@ function clearCheckboxes(except) {
 cbPack.forEach(function (checkbox) {
     checkbox.addEventListener("change", function () {
         let url = new URL(window.location.href);
-        if (window.location.search.includes("indicator_or_strategy")) {
-            url.searchParams.delete("indicator_or_strategy");
-        }
         if (checkbox.checked) {
             let cbQueryName = checkbox.getAttribute("data-queryName");
-            urlQueryStringUrl("item_or_package", cbQueryName, url);
+            urlQueryStringUrl("item_or_package", "package", url);
+            urlQueryStringUrl("indicator_or_strategy", cbQueryName, url);
             fetchAndLoadProducts();
         } else {
             url.searchParams.delete("item_or_package");
+            url.searchParams.delete("indicator_or_strategy");
             window.location.href = url;
         }
         clearCheckboxes(checkbox);
@@ -197,14 +196,13 @@ if (window.location.search.includes("item_or_package")) {
 cbItem.forEach(function (checkbox) {
     checkbox.addEventListener("change", function () {
         let url = new URL(window.location.href);
-        if (window.location.search.includes("item_or_package")) {
-            url.searchParams.delete("item_or_package");
-        }
         if (checkbox.checked) {
             let cbQueryName = checkbox.getAttribute("data-queryName");
+            urlQueryStringUrl("item_or_package", "item", url);
             urlQueryStringUrl("indicator_or_strategy", cbQueryName, url);
             fetchAndLoadProducts();
         } else {
+            url.searchParams.delete("item_or_package");
             url.searchParams.delete("indicator_or_strategy");
             window.location.href = url;
         }
