@@ -27,13 +27,13 @@ if (cartCheckout.length <= 0) {
     passCart(); // Pass cart to endpoint for backend
 }
 
-cartCheckout.forEach(function (item, index) {
+cartCheckout.forEach(function (item) {
     let product = document.createElement("div");
     product.classList.add("c-item");
     product.innerHTML = `
             <div class="x-btn"><span></span><span></span></div>
             <img src="${item.image}" alt="Item Image" />
-            <h4 class="ci-name">${item.name}</h4>
+            <h6 class="ci-name">${item.name}</h6>
             <h6 class="ci-price">$${item.price}</h6>
     `;
     cartItemContainer.appendChild(product);

@@ -229,7 +229,7 @@ if (window.location.search.includes("indicator_or_strategy")) {
 var itemCount;
 let paginationBtns = document.querySelectorAll(".circle");
 let itemsPerPage = window.location.search.includes("page_size") ? parseInt(new URL(window.location.href).searchParams.get("page_size")) : returnItemsCount();
-let totalPages = 0;
+let totalPages = 0; // Is updated in fetchAndLoadProducts
 
 if (!window.location.search.includes("page_size")) {
     urlQueryString("page_size", returnItemsCount());
@@ -248,40 +248,47 @@ window.addEventListener("load", function () {
 
 
 function loadPagination() {
-    if (totalPages < 5) {
-        switch (totalPages) {
-            case 1: 
-                paginationBtns[2].style.display = "none";
-                paginationBtns[3].style.display = "none";
-                paginationBtns[4].style.display = "none";
-                paginationBtns[5].style.display = "none";
-                break;
-            case 2:
-                paginationBtns[3].style.display = "none";
-                paginationBtns[4].style.display = "none";
-                paginationBtns[5].style.display = "none";
-                break;
-            case 3:
-                paginationBtns[4].style.display = "none";
-                paginationBtns[5].style.display = "none";
-                break;
-            case 4:
-                paginationBtns[5].style.display = "none";
-                break;
+        // If approaching max pages, hide buttons
+        if (paginationBtns[5].innerText > totalPages) {
+            paginationBtns[5].style.display = "none";
         }
-    }
+        if (paginationBtns[4].innerText > totalPages) {
+            paginationBtns[4].style.display = "none";
+        }
+    
+        // If there are less than 5 pages, hide the rest
+        if (totalPages < 5) {
+            switch (totalPages) {
+                case 1: 
+                    paginationBtns[2].style.display = "none";
+                    paginationBtns[3].style.display = "none";
+                    paginationBtns[4].style.display = "none";
+                    paginationBtns[5].style.display = "none";
+                    break;
+                case 2:
+                    paginationBtns[3].style.display = "none";
+                    paginationBtns[4].style.display = "none";
+                    paginationBtns[5].style.display = "none";
+                    break;
+                case 3:
+                    paginationBtns[4].style.display = "none";
+                    paginationBtns[5].style.display = "none";
+                    break;
+                case 4:
+                    paginationBtns[5].style.display = "none";
+                    break;
+            }
+        }
     paginationBtns.forEach(function (btn) {
         btn.addEventListener("click", function () {
             if (btn.classList.contains("start")) {
                 let url = new URL(window.location.href);
                 url.searchParams.set("page", 1);
                 window.location.href = url;
-                return;
             } else if (btn.classList.contains("end")) {
                 let url = new URL(window.location.href);
                 url.searchParams.set("page", totalPages);
                 window.location.href = url;
-                return;
             } else {
                 let url = new URL(window.location.href);
                 url.searchParams.set("page", btn.innerText);
@@ -292,8 +299,17 @@ function loadPagination() {
     });
 }
 
+function removePaginationListeners() {
+    paginationBtns.forEach(function (btn) {
+        // Clone the button to ensure the listener is removed correctly
+        const clonedBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(clonedBtn, btn);
+    });
+}
+
 
 function setPagination(page) {
+    
     if (page > 3) {
         let incrementor = page - 3;
         paginationBtns.forEach(function (btn) {
@@ -322,6 +338,8 @@ function setPagination(page) {
             paginationBtns[3].classList.add("active");
         }
     }
+
+
 }
 
 
