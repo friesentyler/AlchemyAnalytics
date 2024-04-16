@@ -7,6 +7,7 @@ Source code for the website AlchemyAnalytics
 * django-ipware
 * python-decouple
 * requests
+* stripe
 
 # Google Sign in Integration
 * Somebody else setting up Google sign in for their Django website

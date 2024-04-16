@@ -104,8 +104,8 @@ def purchase(request):
             import json
 
             post_data = json.loads(request.body.decode("utf-8"))
-
-            print(post_data)
+            for element in post_data:
+                print(element['name'])
         else:
             return HttpResponse('User is not authenticated', status=403)
     else:
