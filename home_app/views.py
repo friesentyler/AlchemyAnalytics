@@ -105,15 +105,14 @@ def purchase(request):
         if request.user.is_authenticated:
             import json
 
-            post_data = json.loads(request.body.decode("utf-8"))
+            '''post_data = json.loads(request.body.decode("utf-8"))
             for element in post_data:
-                print(element['name'])
+                print(element['name'])'''
+            return create_checkout_session(request)
         else:
             return HttpResponse('User is not authenticated', status=403)
     else:
         return HttpResponse('Only POST requests are allowed for this endpoint', status=405)
-
-    return HttpResponse("HELLO")
 
 @csrf_exempt
 def create_checkout_session(request):
