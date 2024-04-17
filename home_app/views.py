@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.core.exceptions import PermissionDenied
 import os
-from django.http import HttpResponse, Http404, JsonResponse
+from decouple import config
+import stripe
+from django.http import HttpResponse, Http404, JsonResponse, HttpResponseServerError
 from django.views.decorators.csrf import csrf_exempt
 from alchemyanalytics import settings
 from home_app import models
@@ -112,6 +114,36 @@ def purchase(request):
         return HttpResponse('Only POST requests are allowed for this endpoint', status=405)
 
     return HttpResponse("HELLO")
+
+@csrf_exempt
+def create_checkout_session(request):
+    stripe.api_key = config("STRIPE_PRIVATE_KEY")
+    try:
+        checkout_session = stripe.checkout.Session.create(
+            customer_email='customer@example.com',
+            submit_type='donate',
+            billing_address_collection='auto',
+            shipping_address_collection={
+                'allowed_countries': ['US', 'CA'],
+            },
+            line_items=[
+                {
+                    'price': 'price_1P61wk01ks0os25IbMDoSDrs',
+                    'quantity': 1,
+                },
+                {
+                    'price': 'price_1P62RT01ks0os25InG18BVQk',
+                    'quantity': 1,
+                },
+            ],
+            mode='payment',
+            success_url='http://127.0.0.1:8000',
+            cancel_url='http://127.0.0.1:8000',
+        )
+    except Exception as e:
+        return HttpResponseServerError(f"An error occurred: {e}")
+
+    return redirect(checkout_session.url, code=303)
 
 def account(request):
     if request.user.is_authenticated:

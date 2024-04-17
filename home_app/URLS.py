@@ -26,5 +26,6 @@ urlpatterns = [
     path('download/<str:file_name>/', views.download_file, name='download_file'),
     path('products', views.products, name="products"),
     path('user_products', views.user_products, name='user_products'),
-    path('purchase', views.purchase, name='purchase')
+    path('purchase', views.purchase, name='purchase'),
+    path('create-checkout-session', views.create_checkout_session, name='create-checkout-session')
 ]
