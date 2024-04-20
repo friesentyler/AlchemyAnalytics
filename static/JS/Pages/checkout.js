@@ -24,7 +24,6 @@ if (cartCheckout.length <= 0) {
     cartItemContainer.innerHTML = "<h6>Your cart is empty</h6>";
 } else {
     cartItemContainer.innerHTML = "";
-    passCart(); // Pass cart to endpoint for backend
 }
 
 cartCheckout.forEach(function (item) {
@@ -55,7 +54,6 @@ function addDeleteBtns() {
             isEmpty();
             removeFromCart(product.querySelector(".ci-name").innerText);
             calcTotal();
-            passCart();
         });
     });
 }
@@ -83,3 +81,16 @@ function passCart() {
         console.error('Error with passing backend cart data:', e);
     }
 }
+
+// Stripe Button 
+
+let stripe = document.getElementById("stripe");
+
+stripe.addEventListener("click", function () {
+    passCart();
+    // localStorage.removeItem("cart");
+    setTimeout(() => {
+        // Redirect to /purchase
+    }, 2000);
+
+});

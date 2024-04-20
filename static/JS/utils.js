@@ -25,7 +25,7 @@ async function postData(url, data) {
             },
             body: JSON.stringify(data)
         });
-        // return response.json();
+        return response.json();
     } catch (error) {
         alertMessage("Cart Error!", "Try reloading the page");
         throw error;

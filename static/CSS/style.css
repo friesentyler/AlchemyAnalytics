@@ -130,7 +130,7 @@ span {
   font-family: Inconsolata, Montserrat, Helvetica, sans-serif;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 860px) {
   h1 {
     font-size: 3.8rem;
   }

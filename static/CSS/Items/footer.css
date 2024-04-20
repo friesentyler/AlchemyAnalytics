@@ -76,7 +76,7 @@ p.disclaimer {
 }
 
 
-@media (max-width: 750px) {
+@media (max-width: 860px) {
     .f-main {
         width: 100%;
     }

@@ -206,7 +206,7 @@
 
 
 
-@media (max-width: 750px) {
+@media (max-width: 860px) {
   .checkout-container {
     flex-direction: column;
     margin: 0 0 5rem 0;

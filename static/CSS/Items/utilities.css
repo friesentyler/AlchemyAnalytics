@@ -130,7 +130,7 @@
   color: var(--font-color);
 }
 
-@media (max-width: 750px) {
+@media (max-width: 860px) {
   .x-btn {
     left: 92%;
   }
