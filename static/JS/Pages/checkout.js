@@ -77,10 +77,21 @@ async function passCart() {
         let res = await postData(currentURL + "purchase", cartCheckout);
 
         // Extract the session ID from the response
-        const sessionId = res.sessionId;
+        let sessionId = res.sessionId;
+        let publicKey = res.publicKey;
+        let stripe = Stripe(publicKey);
 
         // Redirect to the Stripe checkout session URL
-        window.location.href = 'https://checkout.stripe.com/c/pay/' + sessionId;
+        // window.location.href = 'https://checkout.stripe.com/c/pay/' + sessionId;
+        stripe.redirectToCheckout({
+            
+            sessionId: sessionId
+
+          }).then(function (result) {
+            if (result.error) {
+              console.error(result.error.message);
+            }
+          });
     } catch (e) {
         alertMessage("Cart Error", "Try reloading the page");
         console.error('Error with passing backend cart data:', e);
