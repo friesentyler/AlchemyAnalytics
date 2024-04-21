@@ -1,5 +1,3 @@
-
-
 // Check if cart is empty
 
 let mcart = document.querySelector(".cart-items");
@@ -59,6 +57,7 @@ function addDeleteBtns() {
 }
 
 calcTotal();
+
 function calcTotal() {
     let total = 0;
     let prices = document.querySelectorAll(".ci-price");
@@ -72,10 +71,16 @@ function calcTotal() {
 // Pass Cart Information to endpoint
 
 
-function passCart() {
+async function passCart() {
     let currentURL = new URL(domain);
     try {
-        postData(currentURL + "purchase", cartCheckout);
+        let res = await postData(currentURL + "purchase", cartCheckout);
+
+        // Extract the session ID from the response
+        const sessionId = res.sessionId;
+
+        // Redirect to the Stripe checkout session URL
+        window.location.href = 'https://checkout.stripe.com/c/pay/' + sessionId;
     } catch (e) {
         alertMessage("Cart Error", "Try reloading the page");
         console.error('Error with passing backend cart data:', e);
