@@ -142,7 +142,7 @@ def create_checkout_session(request):
     except Exception as e:
         return HttpResponseServerError(f"An error occurred: {e}")
 
-    return JsonResponse({'sessionId': checkout_session.id})
+    return JsonResponse({'sessionId': checkout_session.id, 'publicKey': config('STRIPE_PUBLIC_KEY')})
     #return redirect(checkout_session.url, code=303)
 
 def account(request):
