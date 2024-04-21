@@ -15,7 +15,7 @@ INDICATOR_OR_STRATEGY = (
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    price = models.IntegerField()
+    price = models.CharField(max_length=300)
     date_created = models.DateTimeField(default=timezone.now)
     item_or_package = models.CharField(max_length=100, choices=ITEM_OR_PACKAGE, null=True)
     indicator_or_strategy = models.CharField(max_length=100, choices=INDICATOR_OR_STRATEGY, null=True)

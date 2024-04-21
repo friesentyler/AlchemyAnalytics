@@ -105,17 +105,18 @@ def purchase(request):
         if request.user.is_authenticated:
             import json
 
-            '''post_data = json.loads(request.body.decode("utf-8"))
+            post_data = json.loads(request.body.decode("utf-8"))
+            new_post_data = []
             for element in post_data:
-                print(element['name'])'''
-            return create_checkout_session(request)
+                new_post_data.append({'price': element['price'], 'quantity': 1})
+            return create_checkout_session(request, new_post_data)
         else:
             return HttpResponse('User is not authenticated', status=403)
     else:
         return HttpResponse('Only POST requests are allowed for this endpoint', status=405)
 
 @csrf_exempt
-def create_checkout_session(request):
+def create_checkout_session(request, post_data):
     stripe.api_key = config("STRIPE_PRIVATE_KEY")
     try:
         checkout_session = stripe.checkout.Session.create(
@@ -125,16 +126,7 @@ def create_checkout_session(request):
             shipping_address_collection={
                 'allowed_countries': ['US', 'CA'],
             },
-            line_items=[
-                {
-                    'price': 'price_1P61wk01ks0os25IbMDoSDrs',
-                    'quantity': 1,
-                },
-                {
-                    'price': 'price_1P62RT01ks0os25InG18BVQk',
-                    'quantity': 1,
-                },
-            ],
+            line_items=post_data,
             mode='payment',
             success_url='http://127.0.0.1:8000',
             cancel_url='http://127.0.0.1:8000',
@@ -143,7 +135,6 @@ def create_checkout_session(request):
         return HttpResponseServerError(f"An error occurred: {e}")
 
     return JsonResponse({'sessionId': checkout_session.id, 'publicKey': config('STRIPE_PUBLIC_KEY')})
-    #return redirect(checkout_session.url, code=303)
 
 def account(request):
     if request.user.is_authenticated:
