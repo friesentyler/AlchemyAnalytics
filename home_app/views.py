@@ -142,7 +142,8 @@ def create_checkout_session(request):
     except Exception as e:
         return HttpResponseServerError(f"An error occurred: {e}")
 
-    return redirect(checkout_session.url, code=303)
+    return JsonResponse({'sessionId': checkout_session.id})
+    #return redirect(checkout_session.url, code=303)
 
 def account(request):
     if request.user.is_authenticated:
