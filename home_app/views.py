@@ -2,12 +2,14 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.core.exceptions import PermissionDenied
 import os
+import json
 from decouple import config
 import stripe
 from django.http import HttpResponse, Http404, JsonResponse, HttpResponseServerError
 from django.views.decorators.csrf import csrf_exempt
 from alchemyanalytics import settings
 from home_app import models
+from django.db.models import Case, When, Value, IntegerField
 
 def index(request):
     return render(request, 'index.html', {})
@@ -30,69 +32,86 @@ def user_products(request):
     return JsonResponse(result, safe=False)
 
 def products(request):
-    # should be an integer
+    stripe.api_key = config("STRIPE_PRIVATE_KEY")
+
     page = int(request.GET.get('page', 1))
     page_size = int(request.GET.get('page_size', 2))
+
+    queryset = models.Product.objects.all()
+
+    # Annotate queryset with actual prices from Stripe
+    queryset = queryset.annotate(
+        actual_price=Case(
+            *[When(price=product.price, then=Value(stripe.Price.retrieve(product.price).unit_amount)) for product in
+              queryset],
+            default=Value(0),
+            output_field=IntegerField(),
+        )
+    )
+
     if request.GET:
         offset = (page - 1) * page_size
-        # should be a number float or int
         max_price = request.GET.get('max_price', '')
-        # should be a string: item, package
         item_or_package = request.GET.get('item_or_package', '')
-        # should be a string: indicator, strategy
         indicator_or_strategy = request.GET.get('indicator_or_strategy', '')
-        # should be a string: newest, oldest, lowest, highest
         sort_by = request.GET.get('sort_by', 'newest')
-        if sort_by == 'newest':
-            queryset = models.Product.objects.order_by('-date_created')
-        elif sort_by == 'oldest':
-            queryset = models.Product.objects.order_by('date_created')
-        elif sort_by == 'low':
-            queryset = models.Product.objects.order_by('price')
-        elif sort_by == 'high':
-            queryset = models.Product.objects.order_by('-price')
-        else:
-            queryset = models.Product.objects.order_by('-date_created')
-        queryset_len = len(queryset)
-        entries = queryset
-        if max_price:
-            entries = entries.filter(price__gte=1, price__lte=max_price)
-        if item_or_package:
-            entries = entries.filter(item_or_package=item_or_package)
-        if indicator_or_strategy:
-            entries = entries.filter(indicator_or_strategy=indicator_or_strategy)
 
-        entries = entries[offset:offset + page_size]
+        if max_price:
+            queryset = queryset.filter(actual_price__gte=1, actual_price__lte=max_price)
+        if item_or_package:
+            queryset = queryset.filter(item_or_package=item_or_package)
+        if indicator_or_strategy:
+            queryset = queryset.filter(indicator_or_strategy=indicator_or_strategy)
+
+        # Apply sorting based on actual price
+        if sort_by == 'newest':
+            queryset = queryset.order_by('-date_created')
+        elif sort_by == 'oldest':
+            queryset = queryset.order_by('date_created')
+        elif sort_by == 'low':
+            queryset = queryset.order_by('actual_price')
+        elif sort_by == 'high':
+            queryset = queryset.order_by('-actual_price')
+        else:
+            queryset = queryset.order_by('-date_created')
+
+        queryset_len = queryset.count()
+        entries = queryset[offset:offset + page_size]
+
         result = []
         for entry in entries:
             image_url = request.build_absolute_uri(entry.image.name)
             result.append({
                 'name': entry.name,
-                'price': entry.price,
+                'price_id': entry.price,
+                'price': round(int(entry.actual_price)/100, 2),  # Use actual_price here
                 'description': entry.description,
                 'image_url': image_url,
                 'item_or_package': entry.item_or_package,
                 'indicator_or_strategy': entry.indicator_or_strategy,
                 'total_number_of_products': queryset_len
             })
+
         return JsonResponse(result, safe=False)
     else:
         offset = (page - 1) * page_size
-        queryset = models.Product.objects.order_by('date_created')
-        queryset_len = len(queryset)
+        queryset_len = queryset.count()
         newest_entries = queryset[offset:offset + page_size]
+
         result = []
         for entry in newest_entries:
             image_url = request.build_absolute_uri(entry.image.name)
             result.append({
                 'name': entry.name,
-                'price': entry.price,
+                'price_id': entry.price,
+                'price': round(int(entry.actual_price)/100, 2),  # Use actual_price here
                 'description': entry.description,
                 'image_url': image_url,
                 'item_or_package': entry.item_or_package,
                 'indicator_or_strategy': entry.indicator_or_strategy,
                 'total_number_of_products': queryset_len
             })
+
         return JsonResponse(result, safe=False)
 
 def checkout(request):
@@ -101,14 +120,25 @@ def checkout(request):
 # ideally this should not be csrf_exempt
 @csrf_exempt
 def purchase(request):
+    stripe.api_key = config("STRIPE_PRIVATE_KEY")
     if request.method == "POST":
         if request.user.is_authenticated:
-            import json
-
+            queryset = models.Product.objects.all()
+            queryset = queryset.annotate(
+                actual_price=Case(
+                    *[When(price=product.price, then=Value(stripe.Price.retrieve(product.price).unit_amount)) for
+                      product in
+                      queryset],
+                    default=Value(0),
+                    output_field=IntegerField(),
+                )
+            )
             post_data = json.loads(request.body.decode("utf-8"))
             new_post_data = []
             for element in post_data:
-                new_post_data.append({'price': element['price'], 'quantity': 1})
+                for obj in queryset:
+                    if obj.name == element['name']:
+                        new_post_data.append({'price': obj.price, 'quantity': 1})
             return create_checkout_session(request, new_post_data)
         else:
             return HttpResponse('User is not authenticated', status=403)
