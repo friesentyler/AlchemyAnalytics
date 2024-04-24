@@ -195,3 +195,6 @@ def download_file(request, file_name):
             return response
     else:
         raise Http404()
+
+def stripe_webhook(request):
+    pass

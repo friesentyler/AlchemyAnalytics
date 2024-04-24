@@ -9,6 +9,8 @@ Source code for the website AlchemyAnalytics
 * requests
 * stripe
 * django-cors-headers
+* gunicorn
+* whitenoise
 
 # Google Sign in Integration
 * Somebody else setting up Google sign in for their Django website
