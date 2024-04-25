@@ -57,7 +57,7 @@ def products(request):
         sort_by = request.GET.get('sort_by', 'newest')
 
         if max_price:
-            queryset = queryset.filter(actual_price__gte=1, actual_price__lte=round(int(max_price)/100, 2))
+            queryset = queryset.filter(actual_price__gte=1, actual_price__lte=int(max_price)*100)
         if item_or_package:
             queryset = queryset.filter(item_or_package=item_or_package)
         if indicator_or_strategy:
