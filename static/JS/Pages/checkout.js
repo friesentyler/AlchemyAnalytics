@@ -82,11 +82,9 @@ async function passCart() {
         let stripe = Stripe(publicKey);
 
         // Redirect to the Stripe checkout session URL
-        // window.location.href = 'https://checkout.stripe.com/c/pay/' + sessionId;
         stripe.redirectToCheckout({
-            
             sessionId: sessionId
-
+            
           }).then(function (result) {
             if (result.error) {
               console.error(result.error.message);

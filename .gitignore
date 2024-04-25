@@ -6,3 +6,5 @@ db.sqlite3
 __pycache__
 media/*
 !media/.gitkeep
+staticfiles/*
+alchemyanalytics/__pycache__/*
