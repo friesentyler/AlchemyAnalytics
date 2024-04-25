@@ -158,8 +158,8 @@ def create_checkout_session(request, post_data):
             },
             line_items=post_data,
             mode='payment',
-            success_url='http://127.0.0.1:8000',
-            cancel_url='http://127.0.0.1:8000',
+            success_url='https://alchemyanalytix.com/account',
+            cancel_url='https://alchemyanalytix.com',
         )
     except Exception as e:
         return HttpResponseServerError(f"An error occurred: {e}")
