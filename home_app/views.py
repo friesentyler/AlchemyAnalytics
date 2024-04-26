@@ -241,6 +241,7 @@ def stripe_webhook(request):
 
 @csrf_exempt
 def stripe_webhook(request):
+    logging.basicConfig(filename='webhook.log', level=logging.INFO)
     # Check if it's a POST request
     if request.method != 'POST':
         return HttpResponseBadRequest("Invalid request method")
