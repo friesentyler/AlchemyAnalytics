@@ -227,7 +227,7 @@ def stripe_webhook(request):
             for line_item in line_items:
                 price_id = line_item['price']['id']
                 logging.info(f"price_id information: {price_id}")
-                product = models.Product.objects.get(price_id=price_id)
+                product = models.Product.objects.get(price=price_id)
                 json_result.append({'item': product})
 
         # Respond with a success status
