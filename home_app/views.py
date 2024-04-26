@@ -196,5 +196,31 @@ def download_file(request, file_name):
     else:
         raise Http404()
 
+@csrf_exempt
 def stripe_webhook(request):
-    return HttpResponse('yeet')
+    if request.method == 'POST':
+        payload = request.body
+        sig_header = request.headers['Stripe-Signature']
+
+        # Verify the webhook signature
+        try:
+            event = stripe.Webhook.construct_event(
+                payload, sig_header, config('STRIPE_ENDPOINT_SECRET')
+            )
+        except ValueError as e:
+            # Invalid payload
+            return JsonResponse({'error': str(e)}, status=400)
+        except stripe.error.SignatureVerificationError as e:
+            # Invalid signature
+            return JsonResponse({'error': str(e)}, status=400)
+
+        # Handle the event
+        if event['type'] == 'checkout.session.completed':
+            # Process checkout completion event
+            print("yeet")
+
+        # Respond with a success status
+        return JsonResponse({'received': True})
+
+        # Respond with an error for non-POST requests
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
