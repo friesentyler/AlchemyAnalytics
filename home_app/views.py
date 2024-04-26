@@ -231,7 +231,7 @@ def stripe_webhook(request):
                 json_result.append({'item': product})
 
         # Respond with a success status
-        return JsonResponse(json_result)
+        return JsonResponse(json_result, safe=False)
 
         # Respond with an error for non-POST requests
     return JsonResponse({'error': 'Invalid request method'}, status=405)
