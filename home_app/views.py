@@ -216,14 +216,20 @@ def stripe_webhook(request):
 
         # Handle the event
         if event['type'] == 'checkout.session.completed':
-            session = event['data']['object']
-            line_items = session['display_items']
-            # Process checkout completion event
-            json_result = []
-            for line_item in line_items:
-                price_id = line_item['price']['id']
-                product = models.Product.objects.get(price_id=price_id)
-                json_result.append({'item': product})
+            try:
+                session = event['data']['object']
+                print(session)
+                line_items = session['display_items']
+                print(line_items)
+                # Process checkout completion event
+                json_result = []
+                for line_item in line_items:
+                    print(line_item)
+                    price_id = line_item['price']['id']
+                    product = models.Product.objects.get(price_id=price_id)
+                    json_result.append({'item': product})
+            except Exception as e:
+                print(e)
 
         # Respond with a success status
         return JsonResponse(json_result)
