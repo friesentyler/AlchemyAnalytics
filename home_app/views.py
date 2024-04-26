@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from alchemyanalytics import settings
 from home_app import models
 from django.db.models import Case, When, Value, IntegerField
+import logging
 
 def index(request):
     return render(request, 'index.html', {})
@@ -213,13 +214,13 @@ def stripe_webhook(request):
         except stripe.error.SignatureVerificationError as e:
             # Invalid signature
             return JsonResponse({'error': str(e)}, status=400)
-
+        logging.basicConfig(filename='webhook.log', level=logging.INFO)
         # Handle the event
         if event['type'] == 'checkout.session.completed':
             session = event['data']['object']
-            print(session)
+            logging.info(f"Session information: {session}")
             line_items = session['display_items']
-            #print(line_items)
+            logging.info(f"Line item info: {line_items}")
             # Process checkout completion event
             #json_result = []
             '''for line_item in line_items:
