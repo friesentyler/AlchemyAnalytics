@@ -216,23 +216,20 @@ def stripe_webhook(request):
 
         # Handle the event
         if event['type'] == 'checkout.session.completed':
-            try:
-                session = event['data']['object']
-                print(session)
-                line_items = session['display_items']
-                print(line_items)
-                # Process checkout completion event
-                json_result = []
-                for line_item in line_items:
-                    print(line_item)
-                    price_id = line_item['price']['id']
-                    product = models.Product.objects.get(price_id=price_id)
-                    json_result.append({'item': product})
-            except Exception as e:
-                return JsonResponse(e)
+            session = event['data']['object']
+            #print(session)
+            #line_items = session['display_items']
+            #print(line_items)
+            # Process checkout completion event
+            #json_result = []
+            '''for line_item in line_items:
+                print(line_item)
+                price_id = line_item['price']['id']
+                product = models.Product.objects.get(price_id=price_id)
+                json_result.append({'item': product})'''
 
         # Respond with a success status
-        return JsonResponse(json_result)
+        return JsonResponse({"succeeded": True})
 
         # Respond with an error for non-POST requests
     return JsonResponse({'error': 'Invalid request method'}, status=405)
