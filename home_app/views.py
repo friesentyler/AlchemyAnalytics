@@ -10,7 +10,6 @@ from django.views.decorators.csrf import csrf_exempt
 from alchemyanalytics import settings
 from home_app import models
 from django.db.models import Case, When, Value, IntegerField
-import logging
 
 def index(request):
     return render(request, 'index.html', {})
@@ -200,51 +199,8 @@ def download_file(request, file_name):
     else:
         raise Http404()
 
-''''@csrf_exempt
-def stripe_webhook(request):
-    stripe.api_key = config('STRIPE_PRIVATE_KEY')
-    if request.method == 'POST':
-        payload = request.body
-        sig_header = request.headers['Stripe-Signature']
-
-        # Verify the webhook signature
-        try:
-            event = stripe.Webhook.construct_event(
-                payload, sig_header, config('STRIPE_ENDPOINT_SECRET')
-            )
-        except ValueError as e:
-            # Invalid payload
-            return JsonResponse({'error': str(e)}, status=400)
-        except stripe.error.SignatureVerificationError as e:
-            # Invalid signature
-            return JsonResponse({'error': str(e)}, status=400)
-        logging.basicConfig(filename='webhook.log', level=logging.INFO)
-        # Handle the event
-        if event['type'] == 'checkout.session.completed':
-            session = event['data']['object']
-            logging.info(f"Session information: {session}")
-            line_items = stripe.checkout.Session.list_line_items(session['id'])['data']
-            logging.info(f"line item information: {line_items}")
-            # Process checkout completion event
-            json_result = []
-            for line_item in line_items:
-                price_id = line_item['price']['id']
-                logging.info(f"price_id information: {price_id}")
-                product = models.Product.objects.get(price=price_id)
-                user_product = models.UserProduct(user=request.user, product=product)
-                user_product.save()
-                json_result.append({'item': product})
-
-        # Respond with a success status
-        return JsonResponse(json_result, safe=False)
-
-        # Respond with an error for non-POST requests
-    return JsonResponse({'error': 'Invalid request method'}, status=405)'''
-
-
 @csrf_exempt
 def stripe_webhook(request):
-    logging.basicConfig(filename='webhook.log', level=logging.INFO)
     # Check if it's a POST request
     if request.method != 'POST':
         return HttpResponseBadRequest("Invalid request method")
@@ -261,9 +217,6 @@ def stripe_webhook(request):
             payload, sig_header, config('STRIPE_ENDPOINT_SECRET')
         )
 
-        # Log event details
-        logging.info(f"Received Stripe webhook event: {event['type']}")
-
         # Handle checkout session completed event
         if event['type'] == 'checkout.session.completed':
             session = event['data']['object']
@@ -275,33 +228,31 @@ def stripe_webhook(request):
             # Process each line item
             for line_item in line_items:
                 price_id = line_item['price']['id']
-                logging.info(f"price_id information: {price_id}")
                 # Retrieve corresponding product
                 try:
                     product = models.Product.objects.get(price=price_id)
                 except models.Product.DoesNotExist:
-                    logging.error(f"Product with price ID {price_id} not found")
+                    print("Product with price ID", price_id, "not found")
                     continue  # Skip processing if product not found
-                logging.info(f"request user {request.user}")
                 # Check if user is authenticated
-                user = models.User.objects.get(username=request.data.object.metadata.username)
+                user = models.User.objects.get(username=session['metadata']['username'])
                 if isinstance(user, models.User):
                     # Create UserProduct instance
                     user_product = models.UserProduct(user=user, product=product)
                     user_product.save()
                 else:
-                    logging.warning("Anonymous user detected. Skipping user-product association.")
+                    print("Anonymous user detected. Skipping user-product association.")
 
             return JsonResponse({'message': 'Webhook processed successfully'})
 
     except ValueError as e:
-        logging.error(f"Value error occurred: {e}")
+        print("Value error occurred: ", e)
         return HttpResponseBadRequest("Invalid payload")
     except stripe.error.SignatureVerificationError as e:
-        logging.error(f"Signature verification error occurred: {e}")
+        print("Signature verification error occurred", e)
         return HttpResponseBadRequest("Invalid signature")
     except Exception as e:
-        logging.error(f"An error occurred: {e}")
+        print("An error occurred", e)
         return HttpResponseBadRequest("An error occurred")
 
     return JsonResponse({'message': 'Event not handled'})
