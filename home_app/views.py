@@ -151,7 +151,7 @@ def create_checkout_session(request, post_data):
     try:
         checkout_session = stripe.checkout.Session.create(
             customer_email='customer@example.com',
-            submit_type='donate',
+            submit_type='pay',
             billing_address_collection='auto',
             shipping_address_collection={
                 'allowed_countries': ['US', 'CA'],
@@ -197,4 +197,4 @@ def download_file(request, file_name):
         raise Http404()
 
 def stripe_webhook(request):
-    pass
+    return HttpResponse('yeet')
