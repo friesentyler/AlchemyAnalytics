@@ -27,5 +27,5 @@ urlpatterns = [
     path('products', views.products, name="products"),
     path('user_products', views.user_products, name='user_products'),
     path('purchase', views.purchase, name='purchase'),
-    path('webhook/stripe/', views.stripe_webhook, name='stripe_webhook'),
+    path('webhook/stripe', views.stripe_webhook, name='stripe_webhook'),
 ]
