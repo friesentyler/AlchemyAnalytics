@@ -229,7 +229,7 @@ def stripe_webhook(request):
                     product = models.Product.objects.get(price_id=price_id)
                     json_result.append({'item': product})
             except Exception as e:
-                print(e)
+                return JsonResponse(e)
 
         # Respond with a success status
         return JsonResponse(json_result)
