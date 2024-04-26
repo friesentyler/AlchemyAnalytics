@@ -279,7 +279,7 @@ def stripe_webhook(request):
                 except models.Product.DoesNotExist:
                     logging.error(f"Product with price ID {price_id} not found")
                     continue  # Skip processing if product not found
-
+                logging.info(f"request user {request.user}")
                 # Check if user is authenticated
                 if isinstance(request.user, models.User):
                     # Create UserProduct instance
