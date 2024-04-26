@@ -199,6 +199,7 @@ def download_file(request, file_name):
 
 @csrf_exempt
 def stripe_webhook(request):
+    stripe.api_key = config('STRIPE_PRIVATE_KEY')
     if request.method == 'POST':
         payload = request.body
         sig_header = request.headers['Stripe-Signature']
@@ -219,18 +220,18 @@ def stripe_webhook(request):
         if event['type'] == 'checkout.session.completed':
             session = event['data']['object']
             logging.info(f"Session information: {session}")
-            line_items = session['display_items']
-            logging.info(f"Line item info: {line_items}")
+            line_items = stripe.checkout.Session.list_line_items(session['id'])['data']
+            logging.info(f"line item information: {line_items}")
             # Process checkout completion event
-            #json_result = []
-            '''for line_item in line_items:
-                print(line_item)
+            json_result = []
+            for line_item in line_items:
                 price_id = line_item['price']['id']
+                logging.info(f"price_id information: {price_id}")
                 product = models.Product.objects.get(price_id=price_id)
-                json_result.append({'item': product})'''
+                json_result.append({'item': product})
 
         # Respond with a success status
-        return JsonResponse({"succeeded": True})
+        return JsonResponse(json_result)
 
         # Respond with an error for non-POST requests
     return JsonResponse({'error': 'Invalid request method'}, status=405)
