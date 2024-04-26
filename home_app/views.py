@@ -158,6 +158,9 @@ def create_checkout_session(request, post_data):
                 'allowed_countries': ['US', 'CA'],
             },
             line_items=post_data,
+            metadata={
+                'username': request.user.username,
+            },
             mode='payment',
             success_url='https://alchemyanalytix.com/account',
             cancel_url='https://alchemyanalytix.com',
@@ -281,9 +284,10 @@ def stripe_webhook(request):
                     continue  # Skip processing if product not found
                 logging.info(f"request user {request.user}")
                 # Check if user is authenticated
-                if isinstance(request.user, models.User):
+                user = models.User.objects.get(username=request.data.object.metadata.username)
+                if isinstance(user, models.User):
                     # Create UserProduct instance
-                    user_product = models.UserProduct(user=request.user, product=product)
+                    user_product = models.UserProduct(user=user, product=product)
                     user_product.save()
                 else:
                     logging.warning("Anonymous user detected. Skipping user-product association.")
