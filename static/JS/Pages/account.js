@@ -92,9 +92,9 @@ function updateProducts(data) {
     });
     if (!productsData.length > 0) {
         products.innerHTML = `
-        <h6 style="width: 100%;">You don't have any products to download!</h6>
+        <h6 style="width: 100%; margin-left: 2rem;">You don't have any products to download!</h6>
         <br>
-        <a style="margin-right: auto;" href="/shop"><button style="color: #342C40;" class="modern-btn">Visit Shop</button></a>
+        <a style="margin-right: auto; margin-left: 2rem;" href="/shop"><button style="color: #342C40;" class="modern-btn">Visit Shop</button></a>
         `;
     }
     loadEvents();
