@@ -42,6 +42,10 @@
              is to include the csrf_token bit. -->
             <!-- Show user account information if authenticated -->
             {% if user.is_authenticated %}
+                <script>
+                    console.log({% user %})
+                    console.log({% user.name %})
+                </script>
             <a href="{% url 'account' %}">
                 <button>
                     <img src="{% static 'Images/SVGS/login.svg' %}" class="icon">
