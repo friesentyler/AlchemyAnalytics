@@ -10,7 +10,7 @@ function loadEvents() {
         btn.addEventListener("click", function () {
             if (btn.innerHTML.includes("Download")) {
                 let downloadLink = btn.getAttribute("data-download");
-                window.open("http://" + downloadLink, "_blank");
+                window.open("https://" + downloadLink, "_blank");
             }
             product.classList.toggle("active");
             coverScrn.classList.toggle("active");
