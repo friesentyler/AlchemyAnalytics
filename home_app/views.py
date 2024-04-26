@@ -217,8 +217,8 @@ def stripe_webhook(request):
         # Handle the event
         if event['type'] == 'checkout.session.completed':
             session = event['data']['object']
-            #print(session)
-            #line_items = session['display_items']
+            print(session)
+            line_items = session['display_items']
             #print(line_items)
             # Process checkout completion event
             #json_result = []
