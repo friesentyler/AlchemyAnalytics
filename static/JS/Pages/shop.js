@@ -40,6 +40,24 @@ function loadEvents() {
             closeProduct(product, coverScrn, xbtn, btn);
         });
     });
+    
+    let expandBtns = document.querySelectorAll("#expand");
+
+    expandBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            let img = btn.parentElement.querySelector("img");
+
+            if (img.classList.contains("expanded")) {
+                // img.style.height = "200px";
+                img.removeAttribute("style");
+                btn.innerText = "Expand Image";
+            } else {
+                img.style.height = img.naturalHeight + "px";
+                btn.innerText = "Collapse Image";
+            }
+        });
+    });
+
 }
 
 function closeProduct(product, coverScrn, xbtn, btn) {
@@ -407,7 +425,10 @@ function updateProducts(data) {
             <div class="card">
                 <div class="x-btn xpv"><span></span><span></span></div>
                 <div class="card-scroll">
-                    <img src="${product.image_url}" alt="Image of product" draggable="false" />
+                    <div class="img-cont">
+                        <img src="${product.image_url}" alt="Image of product" draggable="false" />
+                        <div id="expand">Expand Image</div>
+                    </div>
                     <h5>${product.name}</h5>
                     <p class="price-lbl">$<span id="price">${product.price}</span></p>
                     <p class="p-desc">

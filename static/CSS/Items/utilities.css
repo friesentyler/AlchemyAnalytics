@@ -46,6 +46,7 @@
   border-radius: 2px;
   max-height: 170px;
   object-fit: cover;
+  transition-duration: 0.5s;
 }
 
 .card button {
