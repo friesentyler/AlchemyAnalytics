@@ -7,6 +7,10 @@ Source code for the website AlchemyAnalytics
 * django-ipware
 * python-decouple
 * requests
+* stripe
+* django-cors-headers
+* gunicorn
+* whitenoise
 
 # Google Sign in Integration
 * Somebody else setting up Google sign in for their Django website

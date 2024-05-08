@@ -1,0 +1,219 @@
+/* ------------- */ /**/
+/* CSS Utilities */ /**/
+/* ------------- */ /**/
+
+/* Button Styles */
+
+.modern-btn {
+  margin: 2rem 0;
+  border: 5px solid var(--color-main);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1rem 5rem;
+  border-radius: 2px;
+  transition-duration: 0.5s;
+}
+
+.modern-btn:hover {
+  background-color: var(--color-main-hover);
+}
+
+/* Cards */
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 4rem 0 0 0;
+}
+
+.card {
+  width: 300px;
+  padding: 1.5rem;
+  border-radius: 5px;
+  background-color: var(--color-card);
+  margin: 1.5rem;
+  box-shadow: 0px 0px 6px -1px var(--font-color-secondary);
+  transition-duration: 0.5s;
+}
+
+.card h5 {
+  margin: 0.7rem 0 0 0;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 2px;
+  max-height: 170px;
+  object-fit: cover;
+  transition-duration: 0.5s;
+}
+
+.card button {
+  width: 100%;
+  height: 44px;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--color-main);
+  border-radius: 2px;
+  transition-duration: 0.5s;
+  border: 2px solid var(--color-main);
+}
+
+.card button:hover {
+  background-color: var(--color-main-hover);
+}
+
+/* X button */
+
+.x-btn {
+  position: fixed;
+  width: 30px;
+  height: 25px;
+  top: -8%;
+  left: 97%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.x-btn span {
+  position: absolute;
+  background: var(--color-main);
+  height: 4px;
+  width: 28px;
+}
+
+.x-btn.active {
+  opacity: 1;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.x-btn.active span:nth-child(1) {
+  transform: rotate(45deg);
+  translate: 0 10px;
+}
+
+.x-btn.active span:nth-child(2) {
+  transform: rotate(-45deg);
+  translate: 0 10px;
+}
+
+/* ---------- */
+/* PAGINATION */
+/* ---------- */
+
+.pagination {
+  width: 100%;
+  text-align: center;
+  margin: 3rem 0 3rem 1.5rem;
+}
+
+.pagination button {
+  color: var(--color-secondary);
+  border: 3px solid transparent;
+  font-size: 2.6rem;
+  font-weight: 900;
+  border-radius: 4px;
+  padding: 0.6rem;
+  transition-duration: 0.5s;
+}
+
+.pagination button:hover {
+  border: 3px solid var(--color-ml);
+}
+
+.pagination button.active {
+  border: 3px solid var(--color-main);
+  background: var(--color-main);
+  color: var(--font-color);
+}
+
+@media (max-width: 860px) {
+  .x-btn {
+    left: 92%;
+  }
+
+  /* Pagination */
+
+  .pagination {
+    margin: 3rem 0 3rem 0;
+  }
+}
+
+@media (max-height: 550px) {
+  .x-btn {
+    top: 10px;
+    left: 95%;
+  }
+}
+
+
+
+
+
+
+
+
+/* ---------- */
+/* Pre-Loader */
+/* ---------- */
+
+.pre-load .pre-img {
+  width: 297px;
+  height: 170px;
+  background: var(--color-preloader);
+  background-size: 1600px 1600px;
+  animation: preLoadShimmer 1s infinite linear;
+}
+
+.pre-load .pre-header {
+  margin: 7px 0 0 0;
+  width: 250px;
+  height: 30px;
+  background: var(--color-preloader);
+  background-size: 1600px 1600px;
+  animation: preLoadShimmer 1s infinite linear;
+}
+
+.pre-load .pre-price {
+  margin: 10px 0 0 0;
+  width: 65px;
+  height: 20px;
+  background: var(--color-preloader);
+  background-size: 1600px 1600px;
+  animation: preLoadShimmer 1s infinite linear;
+}
+
+.pre-load .pre-btn {
+  width: 100%;
+  height: 44px;
+  background: var(--color-preloader);
+  background-size: 1600px 1600px;
+  animation: preLoadShimmer 1s infinite linear;
+}
+
+.pre-load .pre-desc span {
+  display: block;
+  margin: 6px 0 0 0;
+  width: 100%;
+  height: 20px;
+  background: var(--color-preloader);
+  background-size: 1600px 1600px;
+  animation: preLoadShimmer 1s infinite linear;
+}
+.pre-load .pre-desc span:nth-child(3) {
+  margin-bottom: 35px;
+}
+
+
+@keyframes preLoadShimmer {
+  0% {
+    background-position: -800px -800px
+  }
+  100% {
+    background-position: 800px 800px
+  }
+}

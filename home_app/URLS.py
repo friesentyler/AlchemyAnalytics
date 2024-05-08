@@ -19,5 +19,13 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+    path('shop', views.shop, name='shop'),
+    path('checkout', views.checkout, name="checkout"),
+    path('account', views.account, name="account"),
+    path('download/<str:file_name>/', views.download_file, name='download_file'),
+    path('products', views.products, name="products"),
+    path('user_products', views.user_products, name='user_products'),
+    path('purchase', views.purchase, name='purchase'),
+    path('webhook/stripe', views.stripe_webhook, name='stripe_webhook'),
 ]

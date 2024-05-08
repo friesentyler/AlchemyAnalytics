@@ -1,0 +1,18 @@
+:root {
+    --color-primary: #E3E1DE;
+    --color-secondary: #342C40;
+    --color-secondary-o: rgba(52, 44, 64, 0.9);
+    --color-main: #FF6666;
+    --color-main-hover: rgba(255, 102, 102, 0.7);
+    --color-ml: #ff8e8e;
+    --color-stripe: #4379FF;
+    --color-sl: rgba(67, 120, 255, 0.5);
+    --color-green: #66f096;
+    --color-green-h: rgba(102, 240, 150, 0.7);
+    --color-card: #d4d4d4;
+    --color-preloader: linear-gradient(to right bottom, #bababa 8%, #d4d4d4 18%, #bababa 33%);
+    
+
+    --font-color: #fff;
+    --font-color-secondary: #000;
+}

@@ -3,3 +3,8 @@
 db.sqlite3
 .idea/
 .DS_Store
+__pycache__
+media/*
+!media/.gitkeep
+staticfiles/*
+alchemyanalytics/__pycache__/*

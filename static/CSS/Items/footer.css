@@ -1,0 +1,85 @@
+/* Footer */
+
+.footer {
+  background-color: var(--color-secondary);
+  color: var(--font-color);
+  margin: 0rem 0 0 0;
+  padding: 6rem 0;
+  user-select:text;
+}
+
+.split {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+/* Footer Main */
+
+.f-main {
+    width: 40%;
+    margin: 0 0 5rem 5rem;
+}
+
+    /* Logo Section */
+
+.f-main .logo {
+    flex-direction: column;
+    text-align: left;
+}
+
+.f-main .logo-main {
+    width: 100%;
+}
+
+.f-main .logo-main img {
+    width: 60px;
+    height: 60px;
+    margin: 0 2rem 0 0;
+}
+
+.f-main .logo-main a {
+    display: flex;
+    height: 100%;
+    text-align: left;
+}
+
+.logo-main p {
+    margin: 0 0 0 0;
+}
+
+    /* Nav Btns */
+
+.f-main .nav-btns {
+    float: left;
+    margin: 2rem 0 0 0;
+}
+
+
+/* Contact Aside Section */
+
+.footer .contact {
+    margin: 0 5rem 0;
+}
+
+.footer .modern-btn {
+    width: 100%;
+}
+
+/* Disclaimer */
+
+p.disclaimer {
+    margin: 5rem;
+    line-height: 3rem;
+}
+
+
+@media (max-width: 860px) {
+    .f-main {
+        width: 100%;
+    }
+
+
+}
