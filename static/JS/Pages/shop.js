@@ -18,17 +18,6 @@ function loadEvents() {
             coverScrn.classList.toggle("active");
             xbtn.classList.toggle("active");
             btn.innerText = btn.innerText.includes("View") ? "Add to cart" : "View Item";
-            
-            let expand = product.querySelector("#expand");
-
-            if (expand.innerText.includes("Add")) {
-                let img = expand.parentElement.querySelector("img");
-
-                if (img.textContent === "Collapse Image") {
-                    expand.innerText = "Expand Image";
-                    expand.classList.remove("active");
-                }
-            }
 
         });
 
@@ -57,11 +46,10 @@ function loadEvents() {
         btn.addEventListener("click", function () {
             let img = btn.parentElement.querySelector("img");
 
-            if (img.textContent === "Collapse Image") {
+            if (btn.classList.contains("active")) {
                 btn.innerText = "Expand Image";
                 btn.classList.remove("active");
             } else {
-                img.style.minHeight = "550px";
                 btn.innerText = "Collapse Image";
                 btn.classList.add("active");
             }

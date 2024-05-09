@@ -175,7 +175,7 @@
   cursor: pointer;
 }
 
-#expand.active + img {
+.card.active #expand.active + img {
   min-height: 550px; 
   /* Edits How large expand image is */
 }
