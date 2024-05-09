@@ -20,12 +20,11 @@ function loadEvents() {
             btn.innerText = btn.innerText.includes("View") ? "Add to cart" : "View Item";
             
             let expand = product.querySelector("#expand");
-            
+
             if (expand.innerText.includes("Add")) {
                 let img = expand.parentElement.querySelector("img");
 
                 if (img.textContent === "Collapse Image") {
-                    img.removeAttribute("style");
                     expand.innerText = "Expand Image";
                     expand.classList.remove("active");
                 }
@@ -59,7 +58,6 @@ function loadEvents() {
             let img = btn.parentElement.querySelector("img");
 
             if (img.textContent === "Collapse Image") {
-                img.removeAttribute("style");
                 btn.innerText = "Expand Image";
                 btn.classList.remove("active");
             } else {
@@ -438,8 +436,8 @@ function updateProducts(data) {
                 <div class="x-btn xpv"><span></span><span></span></div>
                 <div class="card-scroll">
                     <div class="img-cont">
+                        <div id="expand">Expand Image</div>
                         <img src="${product.image_url}" alt="Image of product" draggable="false" />
-                        <button id="expand">Expand Image</button>
                     </div>
                     <h5>${product.name}</h5>
                     <p class="price-lbl">$<span id="price">${product.price}</span></p>

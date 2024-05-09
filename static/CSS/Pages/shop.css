@@ -172,6 +172,12 @@
   position: absolute;
   bottom: -2rem;
   right: 1rem;
+  cursor: pointer;
+}
+
+#expand.active + img {
+  min-height: 550px; 
+  /* Edits How large expand image is */
 }
 
 .products .card.active .price-lbl {
