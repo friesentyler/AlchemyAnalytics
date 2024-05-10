@@ -154,6 +154,7 @@
 /* Edits Image Values in Product Viewer */
 .products .card.active img {
   width: 100%;
+  min-height: 200px;
   height: 200px;
   object-fit: cover;
   transition-duration: 0.5s;
@@ -229,6 +230,11 @@
 /* Responiveness */
 
 @media (max-width: 860px) {
+
+  #expand.active {
+    font-size: 1rem;
+    bottom: -1rem;
+  }
 
   .products .card-container {
     margin: 0 0 0 0;
