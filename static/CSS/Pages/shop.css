@@ -145,6 +145,12 @@
   padding: 0 0 0 0;
 }
 
+@-moz-document url-prefix() {
+  .products .card.active {
+    margin: 15rem auto 0 auto;
+  }
+}
+
 .products .card.active .card-scroll {
   overflow-y: auto;
   height: 97%;
@@ -169,7 +175,7 @@
   display: none;
 }
 
-.products .card.active .img-cont #expand {
+.products .card.active #expand {
   display: block;
   position: absolute;
   bottom: -2rem;
