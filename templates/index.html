@@ -103,10 +103,16 @@
           </p>
         </div>
         <div class="mc-imgcontain">
-          <img class="mc-img1 onload-shift animation-delay0_7 animation-duration0_5"
-            src="{% static 'Images/stocks.png' %}" alt="Image of Stocks" />
-          <img class="mc-img2 onload-shift animation-delay0_8 animation-duration0_5"
-            src="{% static 'Images/stocks.png' %}" alt="Image of Stocks" />
+          <video loop autoplay class="mc-img1 onload-shift animation-delay0_7 animation-duration0_5"
+            alt="Video of Stocks">
+            <source src="{% static 'Images/main-video.mp4' %}" type="">
+            Your browser does not support the video tag.
+          </video>
+          <video loop autoplay class="mc-img2 onload-shift animation-delay0_8 animation-duration0_5"
+            alt="Video of Stocks">
+            <source src="{% static 'Images/main-video.mp4' %}" type="">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
     </main>
