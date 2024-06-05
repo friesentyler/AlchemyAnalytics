@@ -120,6 +120,7 @@ main {
 /* Card shuffle */
 .card {
   display: inline;
+  overflow: hidden;
 }
 
 .card p {

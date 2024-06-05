@@ -35,9 +35,9 @@ function loadEvents() {
             }
         });
 
-        window.addEventListener("scroll", function () {
-            closeProduct(product, coverScrn, xbtn, btn);
-        });
+        // window.addEventListener("scroll", function () {
+        //     closeProduct(product, coverScrn, xbtn, btn);
+        // });
     });
     
     let expandBtns = document.querySelectorAll("#expand");
@@ -429,9 +429,9 @@ function updateProducts(data) {
                     </div>
                     <h5>${product.name}</h5>
                     <p class="price-lbl">$<span id="price">${product.price}</span></p>
-                    <p class="p-desc">
+                    <div class="p-desc">
                     ${product.description}
-                    </p>
+                    </div>
                 </div>
                 <button class="product-btn" id="product1">View Item</button>
             </div>
