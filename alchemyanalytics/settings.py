@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config("DEBUG_MODE")
 
 ALLOWED_HOSTS = []
 
@@ -74,11 +74,7 @@ SOCIALACCOUNT_GOOGLE_CLIENT_SECRET = config('SOCIALACCOUNT_GOOGLE_CLIENT_SECRET'
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
 STRIPE_PRIVATE_KEY = config('STRIPE_PRIVATE_KEY')
 
-LOGIN_REDIRECT_URL = 'https://alchemyanalytix.com'
 
-CORS_ALLOWED_ORIGINS = [
-    'https://alchemyanalytix.com',
-]
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = ["*"]
@@ -106,12 +102,12 @@ CORS_ALLOW_HEADERS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    #'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    #'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -182,25 +178,34 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = 'static/'
-
-# For Production only
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# For development only
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+if (DEBUG):
+    # For development only
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static'
+    ]
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000'
+    CORS_ALLOWED_ORIGINS = [
+        'http://127.0.0.1:8000',
+    ]
+else:
+    # For Production only
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    LOGIN_REDIRECT_URL = 'https://alchemyanalytix.com'
+    CORS_ALLOWED_ORIGINS = [
+        'https://alchemyanalytix.com',
+    ]
