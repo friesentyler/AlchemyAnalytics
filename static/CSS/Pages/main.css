@@ -121,6 +121,12 @@ main {
 .card {
   display: inline;
   overflow: hidden;
+  min-height: 350px;
+}
+
+.card .p-desc {
+  max-height: 100px;
+  overflow: hidden;
 }
 
 .card p {
