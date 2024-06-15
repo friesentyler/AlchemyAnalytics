@@ -182,6 +182,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+LOGIN_REDIRECT_URL = config("LOGIN_REDIRECT_URL")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -196,7 +197,6 @@ if (DEBUG):
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
-    LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000'
     CORS_ALLOWED_ORIGINS = [
         'http://127.0.0.1:8000',
     ]
@@ -205,7 +205,6 @@ else:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    LOGIN_REDIRECT_URL = 'https://alchemyanalytix.com'
     CORS_ALLOWED_ORIGINS = [
         'https://alchemyanalytix.com',
     ]
