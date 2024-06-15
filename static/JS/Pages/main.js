@@ -46,9 +46,9 @@ function updateProducts(data) {
         products[i].innerHTML = `
         <img src="${product.image_url}" alt="Image of product" />
         <h5>${product.name}</h5>
-        <p>
+        <div class="p-desc">
           ${product.description}
-        </p>
+        </div>
         <a href="/shop"><button>Buy Now</button></a>
             `;
     });
