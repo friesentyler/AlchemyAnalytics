@@ -178,6 +178,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
+STATIC_URL = '/static/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -197,9 +201,6 @@ if (DEBUG):
     ]
 else:
     # For Production only
-    # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/5.0/howto/static-files/
-    STATIC_URL = 'static/'
     STATIC_ROOT = BASE_DIR / 'staticfiles'
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
