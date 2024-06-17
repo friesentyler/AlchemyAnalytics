@@ -140,6 +140,7 @@
   right: 0;
   margin: 10rem auto 0 auto;
   height: 70%;
+  max-height: 80%;
   width: 80%;
   z-index: 8;
   padding: 0 0 0 0;
